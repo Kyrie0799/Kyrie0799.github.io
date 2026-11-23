@@ -1,514 +1,537 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Partha Deshpande</title>
-<meta name="description" content="Partha Deshpande is a senior data analyst at Bolt in Tallinn, with earlier roles at FedEx, Zepto, Swiggy and ZS, and the founder of Advisoira, a SEBI registered investment adviser.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* Layout idea: a quiet portfolio. Fixed left rail with name and links, one reading column on the right.
-   Type pair: Newsreader (text) with Geist Mono (dates, labels). One bold element: the hero sentence. */
-:root {
-  --ground: #F3EDE1;
-  --ink: #1D1A15;
-  --muted: #62594B;
-  --line: #DCD2BE;
-  --hover: #EAE2D0;
-  --accent: #2A45D6;
-  --serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
-  --mono: 'Geist Mono', ui-monospace, Menlo, monospace;
-  color-scheme: light;
-}
-:root[data-theme="dark"] {
-  --ground: #14120E; --ink: #EDE6D8; --muted: #A59B89; --line: #2D2921; --hover: #1D1A14; --accent: #94A6FF;
-  color-scheme: dark;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0; background: var(--ground); color: var(--ink);
-  font-family: var(--serif); font-size: 1.125rem; line-height: 1.6; font-optical-sizing: auto;
-  -webkit-font-smoothing: antialiased;
-}
-a { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-decoration-thickness: 1px; text-underline-offset: 0.25em; transition: text-decoration-color .15s; }
-a:hover { text-decoration-color: var(--ink); }
-:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
-.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--ground); padding: 8px 12px; z-index: 10; }
-.skip:focus { left: 8px; }
-.mono { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0; line-height: 1.5; }
-.muted { color: var(--muted); }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f6ef">
+  <title>Partha Deshpande — Analytics, experiments &amp; products</title>
+  <meta name="description" content="Partha Deshpande is a senior data analyst at Bolt and founder of Advisoira. He turns complex marketplace questions into measured growth, better decisions and useful products.">
+  <link rel="canonical" href="https://kyrie0799.github.io/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Partha Deshpande — Analytics, experiments &amp; products">
+  <meta property="og:description" content="I turn messy business questions into measurable change, useful systems and products people can trust.">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://kyrie0799.github.io/">
+  <meta name="robots" content="index, follow">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Partha Deshpande","jobTitle":"Senior Data Analyst","worksFor":{"@type":"Organization","name":"Bolt"},"homeLocation":{"@type":"Place","name":"Tallinn, Estonia"},"alumniOf":{"@type":"CollegeOrUniversity","name":"College of Engineering Pune"},"knowsAbout":["Analytics","Experimentation","A/B testing","Forecasting","Pricing","SQL","Python","Data products"],"url":"https://kyrie0799.github.io/","sameAs":["https://www.linkedin.com/in/parthadeshpande","https://advisoira.com"]}
+  </script>
+  <style>
+    :root {
+      --paper: #f4f6ef;
+      --paper-2: #e9eee4;
+      --ink: #17241e;
+      --ink-2: #22352d;
+      --muted: #66746c;
+      --line: #d6ded4;
+      --lime: #d6ff73;
+      --mint: #8ef1c7;
+      --white: #fffefb;
+      --mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --sans: "Manrope", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --wrap: 1180px;
+      color-scheme: light;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 94px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    body::selection { background: var(--lime); color: var(--ink); }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid #2b6b54; outline-offset: 4px; border-radius: 4px; }
+    .skip { position: absolute; top: 10px; left: -999px; z-index: 100; padding: 12px 16px; background: var(--lime); color: var(--ink); border-radius: 8px; }
+    .skip:focus { left: 12px; }
+    .wrap { width: min(var(--wrap), calc(100% - 64px)); margin-inline: auto; }
+    .mono { font-family: var(--mono); font-size: 11px; line-height: 1.55; letter-spacing: .045em; text-transform: uppercase; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--muted); }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #49aa7f; box-shadow: 0 0 0 4px #49aa7f20; }
+    .arrow { display: inline-block; transition: transform .25s ease; }
+    a:hover .arrow { transform: translate(3px, -3px); }
+    .topbar { height: 76px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #17241e13; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 13px; font-weight: 800; letter-spacing: -.035em; }
+    .brand-mark { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 10px; background: var(--ink); color: var(--lime); font-family: var(--mono); font-size: 13px; font-weight: 500; }
+    .nav { display: flex; align-items: center; gap: clamp(18px, 3vw, 38px); }
+    .nav a { color: #506057; font-size: 12px; font-weight: 700; transition: color .2s; }
+    .nav a:hover { color: var(--ink); }
+    .nav .nav-cta { color: var(--ink); border: 1px solid #b9c5b9; border-radius: 999px; padding: 10px 15px; }
+    .nav .nav-cta:hover { background: var(--ink); border-color: var(--ink); color: var(--lime); }
 
-.page { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); gap: 0 clamp(40px, 8vw, 120px); }
-.rail { position: sticky; top: 0; align-self: start; padding: 56px 0; display: flex; flex-direction: column; gap: 28px; min-height: 100vh; }
-.rail .name { font-size: 1.35rem; font-weight: 500; line-height: 1.2; margin: 0; }
-.rail p { margin: 6px 0 0; color: var(--muted); font-size: 1rem; line-height: 1.45; }
-.rail nav, .rail .links { display: flex; flex-direction: column; gap: 6px; }
-.rail a { text-decoration: none; width: fit-content; }
-.rail nav a:hover, .rail .links a:hover { text-decoration: underline; text-decoration-color: var(--ink); }
-.rail .where { margin-top: auto; display: flex; gap: 10px; align-items: baseline; }
-.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); flex: none; transform: translateY(-1px); animation: ping 2s ease-out 0.5s 3; }
-@keyframes ping { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 70%, transparent); } 100% { box-shadow: 0 0 0 12px transparent; } }
+    .hero { position: relative; overflow: hidden; isolation: isolate; padding: clamp(54px, 8vw, 104px) 0 82px; }
+    .hero::before { content: ""; position: absolute; z-index: -2; top: -230px; right: -150px; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle, #d6ff7370 0%, #d6ff7328 32%, transparent 68%); pointer-events: none; }
+    .hero::after { content: ""; position: absolute; z-index: -1; top: 0; right: max(-30px, calc((100vw - var(--wrap))/2 - 42px)); width: min(52vw, 700px); height: 100%; opacity: .32; pointer-events: none; background-image: linear-gradient(#9eaea122 1px, transparent 1px), linear-gradient(90deg, #9eaea122 1px, transparent 1px); background-size: 36px 36px; mask-image: linear-gradient(90deg, transparent, #000 25%, #000 85%, transparent); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(360px, .96fr); align-items: center; gap: clamp(34px, 6vw, 76px); }
+    .hero-copy { position: relative; z-index: 1; }
+    .hero-copy .eyebrow { margin: 0 0 24px; }
+    h1 { max-width: 720px; margin: 0; font-size: clamp(48px, 7.35vw, 92px); line-height: .99; letter-spacing: -.082em; font-weight: 700; }
+    h1 span { color: #56856b; }
+    .hero-intro { max-width: 590px; margin: 28px 0 0; color: #526159; font-size: clamp(16px, 1.45vw, 19px); line-height: 1.75; letter-spacing: -.018em; }
+    .hero-intro strong { color: var(--ink); font-weight: 700; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 30px; }
+    .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 18px; border-radius: 999px; font-size: 12px; font-weight: 800; transition: transform .2s, background .2s, border-color .2s, color .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: var(--lime); background: var(--ink); border: 1px solid var(--ink); }
+    .button-primary:hover { background: #263b32; }
+    .button-quiet { border: 1px solid #c3cec2; background: #ffffff62; }
+    .button-quiet:hover { border-color: var(--ink); background: var(--white); }
+    .hero-note { display: flex; align-items: center; gap: 9px; margin-top: 38px; color: var(--muted); }
+    .hero-note .pulse { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #47a878; }
+    .hero-note .pulse::after { position: absolute; inset: -4px; content: ""; border: 1px solid #47a878; border-radius: 50%; animation: pulse 2.2s ease-out infinite; }
+    @keyframes pulse { from { transform: scale(.65); opacity: .85; } to { transform: scale(1.8); opacity: 0; } }
 
-main { padding: 56px 0 40px; min-width: 0; }
-.hero { margin: 0 0 clamp(44px, 7vw, 84px); font-size: clamp(1.7rem, 4.2vw, 2.7rem); line-height: 1.18; font-weight: 400; letter-spacing: -0.012em; max-width: 21em; text-wrap: pretty; }
+    .visual { position: relative; min-width: 0; perspective: 1000px; }
+    .signal-card { position: relative; min-height: 430px; overflow: hidden; padding: 23px; border-radius: 24px; color: #f7faef; background: linear-gradient(145deg, #1d3028 0%, #17231e 60%, #111a16 100%); box-shadow: 0 28px 80px #20342a24, 0 3px 8px #20342a12; transform: rotateY(-3deg) rotateX(1deg); transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+    .visual:hover .signal-card { transform: rotateY(0) rotateX(0) translateY(-4px); }
+    .signal-card::before { content: ""; position: absolute; width: 310px; height: 310px; right: -110px; bottom: -170px; border-radius: 50%; background: radial-gradient(circle, #d6ff7333, transparent 70%); }
+    .card-head { display: flex; position: relative; justify-content: space-between; align-items: center; }
+    .card-title { margin: 0; font-size: 12px; font-weight: 700; }
+    .live-tag { display: inline-flex; align-items: center; gap: 7px; padding: 6px 9px; border: 1px solid #ffffff23; border-radius: 999px; color: #c3d2c6; }
+    .live-tag i { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 9px var(--mint); }
+    .chart-area { position: relative; margin-top: 27px; height: 218px; border-bottom: 1px solid #ffffff20; background-image: linear-gradient(#ffffff10 1px, transparent 1px); background-size: 100% 54px; }
+    .chart-area svg { display: block; width: 100%; height: 100%; overflow: visible; }
+    .chart-line { fill: none; stroke: var(--lime); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 900; stroke-dashoffset: 900; animation: draw 2s .25s cubic-bezier(.3,.7,.1,1) forwards; }
+    .chart-fill { opacity: 0; animation: fade-in 1s 1s ease forwards; }
+    .chart-dot { fill: var(--lime); transform-box: fill-box; transform-origin: center; animation: dot-in .5s 1.9s cubic-bezier(.2,1.5,.4,1) both; }
+    .chart-ring { fill: none; stroke: var(--lime); opacity: .55; animation: ring 2.4s 2s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes fade-in { to { opacity: .14; } }
+    @keyframes dot-in { from { transform: scale(0); } to { transform: scale(1); } }
+    @keyframes ring { from { transform: scale(.5); opacity: .65; } to { transform: scale(2.6); opacity: 0; } }
+    .chart-label { position: absolute; top: 9px; right: 4px; color: #889c8e; }
+    .chart-axis { position: absolute; bottom: 8px; left: 0; right: 0; display: flex; justify-content: space-between; color: #889c8e; }
+    .card-bottom { display: grid; grid-template-columns: 1.1fr .9fr; gap: 12px; margin-top: 21px; }
+    .stat { padding: 13px 14px; border-radius: 13px; background: #ffffff0c; border: 1px solid #ffffff0e; }
+    .stat-label { color: #a7b5a9; }
+    .stat-value { display: block; margin-top: 6px; color: #f2f7e9; font-size: 21px; letter-spacing: -.06em; font-weight: 700; }
+    .stat-value em { color: var(--lime); font-style: normal; }
+    .float-chip { position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 11px 13px; color: var(--ink); background: var(--white); border: 1px solid #e0e6db; border-radius: 12px; box-shadow: 0 15px 35px #20342a1c; animation: drift 5s ease-in-out infinite; }
+    .float-chip .chip-icon { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 9px; background: #edf5e7; color: #397452; font-size: 13px; }
+    .float-chip strong { display: block; font-size: 11px; line-height: 1.3; }
+    .float-chip small { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; }
+    .float-top { top: 38px; right: -22px; animation-delay: -.7s; }
+    .float-bottom { bottom: 29px; left: -28px; animation-delay: -2.2s; }
+    @keyframes drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
 
-section { padding: 0 0 clamp(44px, 7vw, 76px); }
-h2 { margin: 0 0 20px; font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--muted); }
-.lead { max-width: 33em; margin: 0 0 18px; }
+    .proof { position: relative; z-index: 2; padding: 20px 0; background: var(--ink); color: #f5f8ef; }
+    .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .proof-item { min-height: 76px; display: flex; flex-direction: column; justify-content: center; padding: 8px clamp(12px, 3vw, 34px); border-right: 1px solid #ffffff1b; }
+    .proof-item:first-child { padding-left: 0; }
+    .proof-item:last-child { border: 0; }
+    .proof-number { color: var(--lime); font-size: clamp(23px, 3vw, 34px); line-height: 1.05; font-weight: 700; letter-spacing: -.075em; }
+    .proof-label { margin-top: 7px; color: #aebcb2; font-size: 10px; }
 
-/* years by city */
-.bar { display: flex; gap: 3px; height: 22px; align-items: center; margin-bottom: 14px; }
-.bar i { display: block; height: 10px; background: var(--ink); min-width: 6px; opacity: .85; cursor: default; transition: height .25s cubic-bezier(.2,.8,.2,1), opacity .2s, background-color .2s; }
-.bar i:nth-child(even) { opacity: .4; }
-.bar i.now { background: var(--accent); opacity: 1; }
-.bar.live i { opacity: .15; }
-.bar.live i.on { opacity: 1; height: 22px; background: var(--accent); }
-.legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 22px; }
-.legend li { display: flex; gap: 8px; transition: opacity .2s; }
-.legend.live li { opacity: .35; }
-.legend.live li.on { opacity: 1; }
-.legend.live li.on span:first-child { color: var(--accent); }
-.event { position: relative; }
-/* hand-drawn timeline: path starts at Bolt (now) and draws downward as you scroll */
-.log { position: relative; padding-left: clamp(64px, 13vw, 140px); }
-.log > svg { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; }
-.trace { fill: none; stroke: var(--ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.pencil { fill: none; stroke: var(--ink); stroke-width: 1; stroke-linecap: round; opacity: .3; }
-.knot { fill: var(--ground); stroke: var(--ink); stroke-width: 1.6; opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(.4); transition: opacity .3s, transform .5s cubic-bezier(.2,1.4,.3,1); }
-.knot.seen { opacity: 1; transform: scale(1); }
-.knot.first { fill: var(--accent); stroke: var(--accent); }
-.you { fill: var(--accent); }
-.you-ring { fill: none; stroke: var(--accent); stroke-width: 1.5; opacity: .4; }
-.js-rev .event { opacity: 0; transform: translateY(28px) scale(.97); transform-origin: left top; }
-.js-rev .event.seen { opacity: 1; transform: none; transition: opacity .5s ease, transform .7s cubic-bezier(.2,1.25,.3,1); }
-.js-rev .log:hover .event.seen { opacity: .5; }
-.js-rev .log .event.seen:hover { opacity: 1; }
-#trail { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 20; }
+    section.content { padding: clamp(72px, 10vw, 128px) 0; }
+    .section-heading { display: grid; grid-template-columns: minmax(180px, .55fr) minmax(0, 1fr); align-items: end; gap: 25px; margin-bottom: 43px; }
+    .section-heading .eyebrow { align-self: start; margin-top: 12px; }
+    .section-heading h2 { max-width: 700px; margin: 0; font-size: clamp(34px, 5vw, 58px); line-height: 1.06; letter-spacing: -.075em; font-weight: 700; }
+    .section-heading h2 span { color: #70977d; }
+    .section-heading p { grid-column: 2; max-width: 630px; margin: -7px 0 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+    .work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .work-card { position: relative; min-height: 300px; display: flex; flex-direction: column; overflow: hidden; padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: #fffef8b3; transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .35s, box-shadow .35s; }
+    .work-card:hover { transform: translateY(-5px); border-color: #afc0ad; box-shadow: 0 20px 45px #263b3210; }
+    .work-card.featured { min-height: 360px; grid-column: span 2; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(260px, .95fr); gap: 28px; background: #e9eee4; }
+    .work-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--muted); }
+    .work-company { display: flex; align-items: center; gap: 9px; color: var(--ink); font-weight: 800; font-size: 12px; }
+    .company-mark { width: 27px; height: 27px; display: grid; place-items: center; border-radius: 8px; color: #f4f6ef; background: var(--ink); font-size: 9px; font-family: var(--mono); }
+    .work-card h3 { max-width: 560px; margin: 25px 0 11px; font-size: clamp(22px, 2.8vw, 31px); line-height: 1.12; letter-spacing: -.055em; }
+    .work-card p { max-width: 620px; margin: 0; color: #5e6b63; font-size: 13px; line-height: 1.75; }
+    .work-result { display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 25px; color: #375c46; font-size: 11px; font-weight: 800; }
+    .work-result::before { content: ""; width: 24px; height: 1px; background: #80a28a; }
+    .metric-visual { position: relative; min-height: 250px; align-self: stretch; overflow: hidden; border-radius: 15px; color: #edf4e9; background: #20352b; }
+    .metric-visual::before { position: absolute; inset: 0; content: ""; opacity: .6; background-image: linear-gradient(#ffffff0c 1px, transparent 1px), linear-gradient(90deg, #ffffff0c 1px, transparent 1px); background-size: 24px 24px; }
+    .metric-visual::after { content: ""; position: absolute; inset: auto -20% -70% -20%; height: 250px; background: radial-gradient(ellipse, #d6ff7333, transparent 65%); }
+    .metric-top { position: absolute; top: 17px; left: 18px; right: 18px; display: flex; justify-content: space-between; color: #a2b3a6; }
+    .metric-compare { position: absolute; top: 54px; left: 19px; right: 19px; display: flex; align-items: end; gap: 16px; }
+    .metric-compare > div { flex: 1; }
+    .metric-big { display: block; color: var(--lime); font-size: clamp(35px, 4vw, 52px); line-height: 1; font-weight: 700; letter-spacing: -.09em; }
+    .metric-small { display: block; margin-top: 9px; color: #aab8ac; font-size: 10px; }
+    .metric-arrow { padding-bottom: 20px; color: var(--lime); font-size: 24px; }
+    .mini-bars { position: absolute; inset: auto 20px 19px; display: flex; height: 69px; align-items: end; gap: 6px; }
+    .mini-bars i { flex: 1; min-width: 5px; height: var(--h); border-radius: 4px 4px 1px 1px; background: #668370; opacity: .58; transform-origin: bottom; animation: bar-rise .8s calc(var(--i) * 45ms + .4s) cubic-bezier(.18,.75,.3,1) both; }
+    .mini-bars i:last-child, .mini-bars i:nth-last-child(2) { background: var(--lime); opacity: .92; }
+    @keyframes bar-rise { from { transform: scaleY(.05); } to { transform: scaleY(1); } }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; }
+    .tag { display: inline-flex; align-items: center; padding: 6px 9px; border: 1px solid #d7e0d6; border-radius: 999px; color: #5b6c60; background: #f7f8f4; font-size: 9px; font-weight: 700; }
 
-/* work */
-.log { list-style: none; margin: 0; }
-.log:hover .event { opacity: .5; }
-.log .event:hover { opacity: 1; }
-.event { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); gap: 4px 28px; padding: 22px 0 26px; border-top: 0; transition: opacity .2s; }
-.event .when { color: var(--muted); padding-top: 5px; }
-.event h3 { margin: 0; font-size: 1.2rem; font-weight: 500; line-height: 1.3; }
-.event h3 span { color: var(--muted); font-weight: 400; }
-.event p { margin: 6px 0 0; color: var(--muted); max-width: 34em; font-size: 1.02rem; line-height: 1.55; }
-.pill { font-family: var(--mono); font-size: 0.72rem; border: 1px solid var(--line); border-radius: 99px; padding: 1px 8px; margin-left: 8px; color: var(--muted); vertical-align: 2px; white-space: nowrap; display: inline-block; }
+    .approach { position: relative; overflow: hidden; background: #e9eee4; }
+    .approach::after { position: absolute; top: -140px; right: -80px; width: 350px; height: 350px; content: ""; border: 1px solid #1735280e; border-radius: 50%; box-shadow: 0 0 0 35px #17352808, 0 0 0 70px #17352805; pointer-events: none; }
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #cbd5ca; }
+    .principle { min-height: 208px; padding: 24px 25px 20px 0; border-bottom: 1px solid #cbd5ca; }
+    .principle:not(:nth-child(3n)) { border-right: 1px solid #cbd5ca; }
+    .principle:not(:nth-child(3n+1)) { padding-left: 25px; }
+    .principle .num { color: #77907c; }
+    .principle h3 { margin: 22px 0 9px; font-size: 17px; letter-spacing: -.045em; }
+    .principle p { max-width: 310px; margin: 0; color: #647168; font-size: 12px; line-height: 1.8; }
 
-/* advisoira */
-.builds { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid var(--line); }
-.builds li { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); gap: 4px 28px; padding: 14px 0; border-bottom: 1px solid var(--line); }
-.builds b { font-weight: 500; }
-.builds span { color: var(--muted); font-size: 1.02rem; max-width: 34em; }
-.fine { color: var(--muted); font-size: 0.92rem; max-width: 40em; margin: 20px 0 0; }
+    .founder-grid { display: grid; grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr); gap: clamp(35px, 8vw, 105px); align-items: start; }
+    .founder-copy h2 { margin: 12px 0 20px; font-size: clamp(35px, 5vw, 60px); line-height: 1.04; letter-spacing: -.08em; }
+    .founder-copy p { color: #627067; font-size: 14px; line-height: 1.8; }
+    .founder-copy .founder-lede { color: var(--ink); font-size: 17px; font-weight: 600; letter-spacing: -.025em; }
+    .founder-side { padding-top: 12px; }
+    .founder-side h3 { margin: 0 0 18px; font-size: 13px; }
+    .build-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+    .build-list li { display: grid; grid-template-columns: 120px 1fr; gap: 18px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+    .build-list strong { font-size: 11px; }
+    .build-list span { color: #647168; font-size: 11px; line-height: 1.65; }
+    .disclosure { margin-top: 18px; color: #718077; font-size: 10px; line-height: 1.65; }
 
-/* kv */
-.kv { margin: 0; border-top: 1px solid var(--line); }
-.kv div { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); gap: 4px 28px; padding: 14px 0; border-bottom: 1px solid var(--line); }
-.kv dt { color: var(--muted); font-family: var(--mono); font-size: 0.78rem; padding-top: 5px; }
-.kv dd { margin: 0; max-width: 34em; }
+    .journey { padding-top: 12px; }
+    .journey-line { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; padding-top: 25px; }
+    .journey-line::before { content: ""; position: absolute; top: 31px; left: 4px; right: 4px; height: 1px; background: #bac8bb; }
+    .stop { position: relative; padding: 31px 16px 0 0; }
+    .stop::before { position: absolute; top: -1px; left: 0; width: 11px; height: 11px; content: ""; border: 3px solid var(--paper); border-radius: 50%; background: #4d9870; box-shadow: 0 0 0 1px #4d9870; transition: transform .3s, box-shadow .3s; }
+    .stop:last-child::before { background: var(--lime); box-shadow: 0 0 0 1px var(--ink); }
+    .stop:hover::before { transform: scale(1.3); box-shadow: 0 0 0 5px #4d987026; }
+    .stop b { display: block; font-size: 12px; }
+    .stop span { display: block; margin-top: 6px; color: var(--muted); }
+    .stop small { display: block; margin-top: 5px; color: #8a978d; font-family: var(--mono); font-size: 9px; }
 
-/* contact */
-.mail { font-size: clamp(1.5rem, 4.4vw, 2.2rem); font-weight: 400; letter-spacing: -0.01em; overflow-wrap: anywhere; }
-.actions { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 16px; align-items: center; }
-button.copy { font-family: var(--mono); font-size: 0.78rem; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 99px; padding: 10px 16px; min-height: 44px; cursor: pointer; transition: background .15s, border-color .15s; }
-button.copy:hover { background: var(--hover); border-color: var(--ink); }
-footer { padding: 24px 0 48px; color: var(--muted); border-top: 1px solid var(--line); }
+    .capability { padding-top: 10px; }
+    .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .cap { min-height: 140px; padding: 19px; border: 1px solid var(--line); border-radius: 14px; background: #fffef866; }
+    .cap h3 { margin: 0 0 10px; font-size: 12px; }
+    .cap p { margin: 0; color: #68766d; font-size: 11px; line-height: 1.75; }
 
-@media (max-width: 900px) {
-  .page { grid-template-columns: minmax(0, 1fr); }
-  .rail { position: static; min-height: 0; padding: 32px 0 0; gap: 18px; }
-  .rail nav { flex-direction: row; flex-wrap: wrap; gap: 6px 18px; }
-  .rail .links { flex-direction: row; gap: 18px; }
-  .rail .where { margin-top: 0; }
-  main { padding-top: 40px; }
-}
-@media (max-width: 600px) {
-  .event, .builds li, .kv div { grid-template-columns: minmax(0, 1fr); }
-  .event { gap: 2px; }
-  .event .when { padding-top: 0; }
-  .kv dt { padding-top: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .dot { animation: none; }
-  .event, a, button.copy { transition: none; }
-  .js-rev .event { opacity: 1; transform: none; }
-}
-#adv-view[hidden] { display: none; }
-body.view-adv #home { display: none; }
-.back { margin: 0 0 28px; }
-.view-title { font-family: var(--serif); font-size: clamp(2rem, 4.4vw, 2.8rem); font-weight: 500; color: var(--ink); margin: 0 0 18px; }
-#adv-view section { padding-top: 34px; padding-bottom: 8px; }
-#adv-h a { color: inherit; }
-</style>
-<link rel="canonical" href="https://kyrie0799.github.io/">
-<meta name="description" content="Partha Deshpande is a data analyst at Bolt in Tallinn and the founder of Advisoira. Nine years across experimentation, forecasting and pipeline automation at ZS, Swiggy, Zepto, FedEx and Bolt.">
-<meta property="og:title" content="Partha Deshpande, data analyst">
-<meta property="og:description" content="Experiments, forecasts and the automation behind pricing and growth. Five cities, five companies.">
-<meta property="og:type" content="profile">
-<meta property="og:url" content="https://kyrie0799.github.io/">
-<meta name="robots" content="index, follow">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Partha Deshpande","jobTitle":"Senior Data Analyst","worksFor":{"@type":"Organization","name":"Bolt"},"homeLocation":{"@type":"Place","name":"Tallinn, Estonia"},"alumniOf":{"@type":"CollegeOrUniversity","name":"COEP"},"knowsAbout":["Experimentation","A/B testing","Forecasting","SQL","Python","dbt","Power BI","Looker","Data pipelines"],"url":"https://kyrie0799.github.io/","sameAs":["https://www.linkedin.com/in/parthadeshpande","https://advisoira.com"]}
-</script>
+    .contact { position: relative; overflow: hidden; padding: clamp(60px, 8vw, 96px) 0; color: #f4f8ef; background: var(--ink); }
+    .contact::before { position: absolute; top: -280px; right: -80px; width: 620px; height: 620px; content: ""; border-radius: 50%; background: radial-gradient(circle, #d6ff7324, transparent 65%); }
+    .contact-grid { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 30px; }
+    .contact .eyebrow { color: #aab9ad; }
+    .contact h2 { max-width: 730px; margin: 19px 0 14px; font-size: clamp(44px, 7vw, 82px); line-height: 1; letter-spacing: -.085em; }
+    .contact h2 span { color: var(--lime); }
+    .contact p { max-width: 530px; margin: 0; color: #aab9ad; font-size: 13px; line-height: 1.75; }
+    .contact-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .contact .button-primary { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+    .contact .button-primary:hover { background: #e3ff9e; }
+    .contact .button-quiet { border-color: #ffffff37; color: #f2f5eb; background: #ffffff08; }
+    .contact .button-quiet:hover { background: #ffffff16; border-color: #ffffff76; }
+    .contact-email { margin-top: 22px; color: var(--lime); font-family: var(--mono); font-size: 11px; }
+    footer { padding: 20px 0 25px; color: #8e9d92; background: #121c17; }
+    .footer-row { display: flex; justify-content: space-between; gap: 15px; }
+    .footer-row a:hover { color: var(--lime); }
+
+    [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+    [data-reveal].visible { opacity: 1; transform: none; }
+    [data-delay="1"] { transition-delay: .08s; }
+    [data-delay="2"] { transition-delay: .16s; }
+    [data-delay="3"] { transition-delay: .24s; }
+    @media (max-width: 960px) {
+      .wrap { width: min(var(--wrap), calc(100% - 44px)); }
+      .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(310px, .82fr); gap: 28px; }
+      h1 { font-size: clamp(48px, 8.2vw, 76px); }
+      .signal-card { min-height: 395px; padding: 19px; }
+      .chart-area { height: 192px; }
+      .float-top { right: -11px; }
+      .float-bottom { left: -12px; }
+      .work-card.featured { grid-template-columns: minmax(0, 1fr) minmax(230px, .82fr); }
+    }
+    @media (max-width: 720px) {
+      html { scroll-padding-top: 74px; }
+      .wrap { width: calc(100% - 36px); }
+      .topbar { height: 66px; }
+      .nav { gap: 17px; }
+      .nav a { font-size: 11px; }
+      .nav a:nth-child(1), .nav a:nth-child(2), .nav a:nth-child(3) { display: none; }
+      .nav .nav-cta { padding: 9px 13px; }
+      .hero { padding: 58px 0 68px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 43px; }
+      h1 { max-width: 610px; font-size: clamp(53px, 12vw, 80px); }
+      .hero-intro { max-width: 540px; }
+      .visual { width: min(100%, 520px); margin-inline: auto; }
+      .signal-card { min-height: 380px; transform: none; }
+      .chart-area { height: 193px; }
+      .hero::after { top: 250px; right: -95px; width: 115vw; height: 450px; }
+      .float-top { right: -5px; }
+      .float-bottom { left: -5px; }
+      .proof-grid { grid-template-columns: repeat(2, 1fr); }
+      .proof-item { min-height: 72px; padding-left: 18px; border-bottom: 1px solid #ffffff1b; }
+      .proof-item:nth-child(2) { border-right: 0; }
+      .proof-item:nth-child(3), .proof-item:nth-child(4) { border-bottom: 0; }
+      .proof-item:nth-child(3) { padding-left: 0; }
+      .section-heading { grid-template-columns: 1fr; gap: 13px; margin-bottom: 30px; }
+      .section-heading .eyebrow { margin-top: 0; }
+      .section-heading p { grid-column: 1; margin: 0; }
+      .work-grid { grid-template-columns: 1fr; }
+      .work-card.featured { grid-column: auto; min-height: 0; display: flex; }
+      .work-card { min-height: 265px; }
+      .metric-visual { width: 100%; min-height: 230px; order: 2; }
+      .featured-copy { order: 1; }
+      .work-card.featured .work-result { order: 3; }
+      .principles { grid-template-columns: repeat(2, 1fr); }
+      .principle { min-height: 188px; padding: 20px 15px 18px 0; }
+      .principle:not(:nth-child(3n)) { border-right: 0; }
+      .principle:not(:nth-child(3n+1)) { padding-left: 0; }
+      .principle:nth-child(odd) { border-right: 1px solid #cbd5ca; padding-right: 15px; }
+      .principle:nth-child(even) { padding-left: 15px; }
+      .principle h3 { margin-top: 17px; font-size: 15px; }
+      .founder-grid { grid-template-columns: 1fr; gap: 35px; }
+      .journey-line { grid-template-columns: repeat(5, minmax(94px, 1fr)); width: 650px; }
+      .journey-scroll { overflow-x: auto; padding-bottom: 12px; }
+      .cap-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; align-items: start; }
+      .contact-actions { flex-direction: row; flex-wrap: wrap; }
+      .contact h2 { font-size: clamp(48px, 11vw, 75px); }
+      .footer-row { flex-direction: column; }
+    }
+    @media (max-width: 420px) {
+      .wrap { width: calc(100% - 30px); }
+      .hero { padding-top: 49px; }
+      .hero-copy .eyebrow { font-size: 9px; }
+      h1 { font-size: 53px; }
+      .hero-intro { font-size: 15px; }
+      .signal-card { min-height: 347px; padding: 17px; border-radius: 19px; }
+      .chart-area { height: 164px; margin-top: 22px; }
+      .stat-value { font-size: 18px; }
+      .float-chip { padding: 9px 10px; }
+      .float-bottom { bottom: 18px; }
+      .proof-item { padding-right: 8px; }
+      .proof-number { font-size: 25px; }
+      .proof-label { font-size: 9px; }
+      .cap-grid { grid-template-columns: 1fr; }
+      .cap { min-height: 0; }
+      .build-list li { grid-template-columns: 92px 1fr; gap: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      [data-reveal] { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<canvas id="trail" aria-hidden="true"></canvas>
-<div class="page">
-  <aside class="rail">
-    <div>
-      <h1 class="name">Partha Deshpande</h1>
-      <p>Data analyst. Founder of Advisoira.</p>
-    </div>
-    <nav class="mono" aria-label="Sections">
+  <a class="skip mono" href="#main">Skip to content</a>
+  <header class="wrap topbar">
+    <a class="brand" href="#top" aria-label="Partha Deshpande, home"><span class="brand-mark">PD</span><span>Partha Deshpande</span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#work">Selected work</a>
       <a href="#approach">Approach</a>
-      <a href="#work">Work</a>
-      <a href="#/advisoira">Advisoira</a>
-      <a href="#tools">Tools and training</a>
-      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta">Get in touch <span class="arrow">↗</span></a>
     </nav>
-    <div class="links mono">
-      <a href="https://www.linkedin.com/in/parthadeshpande">LinkedIn</a>
-      <a href="https://advisoira.com">advisoira.com</a>
-    </div>
-    <div class="where mono" aria-label="Current location"><span class="dot" aria-hidden="true"></span><span>Tallinn, Estonia<br><span class="muted">Bolt, since Sep 2026</span></span></div>
-  </aside>
+  </header>
 
   <main id="main">
-    <div id="home">
-    <p class="hero">I turn messy marketplace data into decisions: experiments, forecasts and the automation behind pricing and growth. Five cities, five companies, nine years.</p>
-
-    <section aria-labelledby="where-h">
-      <h2 id="where-h">Time spent in each city</h2>
-      <div class="bar" id="bar" role="img" aria-label="Pune about 70 months, Mumbai 14, Bengaluru 7, Mumbai 17, Tallinn 3 so far">
-        <i data-seg="0" style="flex:70"></i><i data-seg="1" style="flex:14"></i><i data-seg="2" style="flex:7"></i><i data-seg="3" style="flex:17"></i><i data-seg="4" class="now" style="flex:3"></i>
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow mono">Analytics · experimentation · products</p>
+          <h1 id="hero-title">I make the numbers <span>useful.</span></h1>
+          <p class="hero-intro">I’m Partha: a data analyst and founder who turns messy business questions into <strong>measured growth, clearer decisions, and useful systems.</strong> From marketplaces and logistics to pharma and a product I built from scratch.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">Explore the work <span class="arrow">↓</span></a>
+            <a class="button button-quiet" href="mailto:partha0799@gmail.com">Start a conversation <span class="arrow">↗</span></a>
+          </div>
+          <div class="hero-note mono"><span class="pulse" aria-hidden="true"></span><span>Currently building at Bolt · Tallinn, Estonia</span></div>
+        </div>
+        <div class="visual" aria-label="Animated illustration of a business signal becoming a decision">
+          <div class="signal-card">
+            <div class="card-head"><p class="card-title">From signal to decision</p><span class="live-tag mono"><i></i> SIGNAL FOUND</span></div>
+            <div class="chart-area" aria-hidden="true">
+              <span class="chart-label mono">ILLUSTRATIVE SIGNAL PATH</span>
+              <svg viewBox="0 0 480 218" role="presentation" preserveAspectRatio="none">
+                <defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#d6ff73"/><stop offset="1" stop-color="#d6ff73" stop-opacity="0"/></linearGradient></defs>
+                <path class="chart-fill" d="M0 182 C45 170 55 176 88 158 S143 164 177 139 S224 146 260 113 S320 127 352 88 S412 95 480 40 L480 218 L0 218Z" fill="url(#fill)"/>
+                <path class="chart-line" d="M0 182 C45 170 55 176 88 158 S143 164 177 139 S224 146 260 113 S320 127 352 88 S412 95 480 40"/>
+                <circle class="chart-ring" cx="480" cy="40" r="8"/><circle class="chart-dot" cx="480" cy="40" r="5"/>
+              </svg>
+              <div class="chart-axis mono"><span>QUESTION</span><span>TEST</span><span>DECISION</span></div>
+            </div>
+            <div class="card-bottom">
+              <div class="stat"><span class="stat-label mono">THE METHOD</span><span class="stat-value">Signal <em>→</em> action</span></div>
+              <div class="stat"><span class="stat-label mono">THE STANDARD</span><span class="stat-value">Prove the lift</span></div>
+            </div>
+          </div>
+          <div class="float-chip float-top"><span class="chip-icon">↗</span><span><strong>Decision-ready</strong><small>Not just another dashboard</small></span></div>
+          <div class="float-chip float-bottom"><span class="chip-icon">✓</span><span><strong>Measured against a control</strong><small>Impact with a counterfactual</small></span></div>
+        </div>
       </div>
-      <ul class="legend mono" id="legend">
-        <li data-seg="0"><span>Pune</span><span class="muted">2017 to 2023</span></li>
-        <li data-seg="1"><span>Mumbai</span><span class="muted">2023 to 2024</span></li>
-        <li data-seg="2"><span>Bengaluru</span><span class="muted">2024 to 2025</span></li>
-        <li data-seg="3"><span>Mumbai</span><span class="muted">2025 to 2026</span></li>
-        <li data-seg="4"><span>Tallinn</span><span class="muted">2026 to now</span></li>
-      </ul>
     </section>
 
-    <section id="approach" aria-labelledby="appr-h">
-      <h2 id="appr-h">What I do differently</h2>
-      <ul class="builds">
-        <li><b>Prove it with a control</b><span>I measure impact against a comparison group, not a before-and-after. At Zepto, retention rose 300 bps and reactivation rose 10% against a control.</span></li>
-        <li><b>Own the whole loop</b><span>I define the metric, design the experiment, forecast the outcome and automate the pipeline. At Swiggy I wrote the Orders per Day and GMV definitions from scratch. At Bolt I run incentive experiments and the quarterly budget.</span></li>
-        <li><b>Cut the manual work</b><span>At FedEx, four audit pipelines took a two-hour run down to 15 minutes. At ZS, moving Oracle SQL to Alteryx saved 6 days a month.</span></li>
-        <li><b>Ship the product, not just the analysis</b><span>I built Advisoira alone: the site, the ETF, risk and overlap tools, and the data pipelines behind them, in a regulated field.</span></li>
-        <li><b>Carry it across markets</b><span>Quick commerce, logistics, ride and delivery, and pharma sales across five cities, so a method has to hold up in more than one setting.</span></li>
-        <li><b>Make it repeatable</b><span>I write the SOPs and mentor analysts, and led a 36-person sales team, so the work still runs when I am not in the room.</span></li>
-      </ul>
-    </section>
-
-    <section id="work" aria-labelledby="work-h">
-      <h2 id="work-h">Work</h2>
-      <ol class="log">
-        <li class="event" data-seg="4">
-          <div class="when mono">Sep 2026 to now<br>Tallinn</div>
-          <div>
-            <h3>Senior Data Analyst <span>at Bolt</span></h3>
-            <p>Designing and analysing incentive experiments, building the 2027 quarterly budget, and leading analytics for the Delivery-as-a-Service vertical.</p>
-          </div>
-        </li>
-        <li class="event" data-seg="3">
-          <div class="when mono">Mar 2025 to Aug 2026<br>Mumbai</div>
-          <div>
-            <h3>Senior Data Analyst 2 <span>at FedEx</span></h3>
-            <p>Built four audit pipelines in Python and VBA that cut runtime 88%, from 2 hours to 15 minutes, with no manual steps. Designed Apollo, a pricing monitor that alerts owners to overwrites. Wrote the SOPs and validation checks, and mentored analysts.</p>
-          </div>
-        </li>
-        <li class="event" data-seg="2">
-          <div class="when mono">Aug 2024 to Mar 2025<br>Bengaluru</div>
-          <div>
-            <h3>Senior Analytics Manager <span>at Zepto</span></h3>
-            <p>Found the causes of churn through cohort analysis and built CRM journeys around them. Against a control group, retention rose 300 bps and reactivation rose 10%. Also modelled ARPU by area and led a category revenue forecast.</p>
-          </div>
-        </li>
-        <li class="event" data-seg="1">
-          <div class="when mono">Jun 2023 to Aug 2024<br>Mumbai and Goa</div>
-          <div>
-            <h3>Senior Business Associate <span>at Swiggy Instamart</span> <span class="pill">promoted from Business Associate</span></h3>
-            <p>Defined Orders per Day and GMV from scratch, with the OKRs and baselines for two cities. Led a 36-person sales team and ran A/B tests and root-cause analyses on unit economics.</p>
-          </div>
-        </li>
-        <li class="event" data-seg="0">
-          <div class="when mono">May 2021 to Jun 2023<br>Pune</div>
-          <div>
-            <h3>Decision Analytics Associate <span>at ZS</span></h3>
-            <p>Built Power BI dashboards for 2,000+ pharma sales reps and designed incentive compensation plans. Moved workflows from Oracle SQL to Alteryx, saving 6 days a month. Designed call planning for 1,500+ reps; 87% improved.</p>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <section id="advisoira" aria-labelledby="adv-h">
-      <h2 id="adv-h"><a href="#/advisoira">Advisoira, the full page</a></h2>
-      <p class="lead">A fee-only investment advisory practice, registered with SEBI and started in 2025. I built the site, the tools and the data pipelines myself.</p>
-      <ul class="builds">
-        <li><b>ETF Pulse</b><span>Live premium and discount to NAV for Indian ETFs, with a daily email digest of alerts.</span></li>
-        <li><b>Risk profile</b><span>Scores risk tolerance and capacity, then shows an example split across equity, debt and liquid funds.</span></li>
-        <li><b>Overlap tool</b><span>Shows how much of one mutual fund's holdings repeat in another.</span></li>
-        <li><b>Stack</b><span>Python jobs on GitHub Actions, Supabase for data and sign-in, serverless APIs on Vercel.</span></li>
-      </ul>
-      <p class="fine">Advisoira is separate from my employer. This page describes tools I built. It is not investment advice or an offer of advisory services, and investments are subject to market risk.</p>
-    </section>
-
-    <section id="tools" aria-labelledby="tools-h">
-      <h2 id="tools-h">Tools and training</h2>
-      <dl class="kv">
-        <div><dt>Data</dt><dd>SQL on Snowflake, Databricks, PostgreSQL and Oracle. dbt, Git, Python.</dd></div>
-        <div><dt>Reporting</dt><dd>Power BI, Looker, Superset, Alteryx.</dd></div>
-        <div><dt>Methods</dt><dd>A/B tests and quasi-experiments, cohort analysis, forecasting, root-cause analysis, metric design.</dd></div>
-        <div><dt>AI tools</dt><dd>Claude, ChatGPT, Codex and Cursor.</dd></div>
-        <div><dt>Education</dt><dd>B.Tech in Planning, minor in Finance, College of Engineering Pune, 2017 to 2021.</dd></div>
-        <div><dt>Credentials</dt><dd>SEBI registered investment adviser. FRM Part I (GARP). Google Data Analytics Certificate.</dd></div>
-      </dl>
-    </section>
-
-    <section id="contact" aria-labelledby="contact-h">
-      <h2 id="contact-h">Contact</h2>
-      <a class="mail" href="mailto:partha0799@gmail.com" id="mail">partha0799@gmail.com</a>
-      <div class="actions">
-        <button class="copy" type="button" id="copy">Copy email address</button>
-        <a class="mono" href="https://www.linkedin.com/in/parthadeshpande">LinkedIn</a>
+    <section class="proof" aria-label="Selected career highlights">
+      <div class="wrap proof-grid">
+        <div class="proof-item"><span class="proof-number">+300 bps</span><span class="proof-label">retention lift vs. control at Zepto</span></div>
+        <div class="proof-item"><span class="proof-number">−88%</span><span class="proof-label">audit pipeline runtime at FedEx</span></div>
+        <div class="proof-item"><span class="proof-number">6 days</span><span class="proof-label">saved every month at ZS</span></div>
+        <div class="proof-item"><span class="proof-number">36 people</span><span class="proof-label">sales team led at Swiggy</span></div>
       </div>
-      <p id="status" class="mono muted" role="status" aria-live="polite" style="min-height:1.4em;margin:12px 0 0"></p>
     </section>
 
-</div>
+    <section class="content" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow mono">Selected work / 2021—now</p>
+          <h2 id="work-title">Good analysis changes <span>what happens next.</span></h2>
+          <p>Across five companies, the work has followed one pattern: get close to the decision, make the measurement trustworthy, and leave the team with something they can use.</p>
+        </div>
+        <div class="work-grid">
+          <article class="work-card featured" data-reveal>
+            <div class="featured-copy">
+              <div class="work-meta"><span class="work-company"><i class="company-mark">B</i>Bolt</span><span class="mono">SEP 2026 — NOW · TALLINN</span></div>
+              <h3>Put incentives to work, with a plan behind them.</h3>
+              <p>I design and analyse incentive experiments, build the quarterly budget, and lead analytics for Bolt’s Delivery-as-a-Service vertical. The goal: understand which levers create durable growth and give operators a budget they can act on.</p>
+              <div class="tag-row"><span class="tag">Experiment design</span><span class="tag">Budgeting</span><span class="tag">Marketplace analytics</span></div>
+              <div class="work-result">Experiments connected to operating decisions</div>
+            </div>
+            <div class="metric-visual" role="img" aria-label="A rising chart representing experiment-led decisions">
+              <div class="metric-top mono"><span>INCENTIVE PERFORMANCE</span><span>LIVE</span></div>
+              <div class="metric-compare"><div><span class="metric-big">Test</span><span class="metric-small">finds the lever</span></div><span class="metric-arrow">→</span><div><span class="metric-big">Scale</span><span class="metric-small">funds what works</span></div></div>
+              <div class="mini-bars" aria-hidden="true">
+                <i style="--h:24%;--i:1"></i><i style="--h:38%;--i:2"></i><i style="--h:31%;--i:3"></i><i style="--h:50%;--i:4"></i><i style="--h:44%;--i:5"></i><i style="--h:65%;--i:6"></i><i style="--h:56%;--i:7"></i><i style="--h:78%;--i:8"></i><i style="--h:70%;--i:9"></i><i style="--h:96%;--i:10"></i>
+              </div>
+            </div>
+          </article>
+          <article class="work-card" data-reveal data-delay="1">
+            <div class="work-meta"><span class="work-company"><i class="company-mark">FX</i>FedEx</span><span class="mono">2025—26</span></div>
+            <h3>Two hours of audit work. Down to fifteen minutes.</h3>
+            <p>Built four end-to-end Python and VBA audit pipelines with no manual steps. Also designed Apollo, a pricing monitor that alerts owners to overwrites, plus the SOPs and validation checks to keep it dependable.</p>
+            <div class="work-result">88% less runtime · repeatable controls</div>
+          </article>
+          <article class="work-card" data-reveal data-delay="2">
+            <div class="work-meta"><span class="work-company"><i class="company-mark">Z</i>Zepto</span><span class="mono">2024—25</span></div>
+            <h3>Prove retention changed. Don’t assume it.</h3>
+            <p>Found churn drivers in cohort data, then built CRM journeys around them. Measured the outcome against a control group; also modelled ARPU by area and led a category revenue forecast.</p>
+            <div class="work-result">Retention +300 bps · reactivation +10%</div>
+          </article>
+          <article class="work-card" data-reveal>
+            <div class="work-meta"><span class="work-company"><i class="company-mark">S</i>Swiggy Instamart</span><span class="mono">2023—24</span></div>
+            <h3>Make the metric mean the same thing to everyone.</h3>
+            <p>Defined Orders per Day and GMV from scratch, then set the OKRs and baselines for two cities. Ran A/B tests and root-cause analyses on unit economics while leading a 36-person sales team.</p>
+            <div class="work-result">A shared operating language for two cities</div>
+          </article>
+          <article class="work-card" data-reveal data-delay="1">
+            <div class="work-meta"><span class="work-company"><i class="company-mark">ZS</i>ZS</span><span class="mono">2021—23</span></div>
+            <h3>Give field teams time back—and better direction.</h3>
+            <p>Built Power BI dashboards for 2,000+ pharma sales reps, planned calls for 1,500+, and designed incentive compensation. Moving workflows from Oracle SQL to Alteryx saved six days each month.</p>
+            <div class="work-result">6 days/month saved · 87% improved call planning</div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <div id="adv-view" hidden>
-      <p class="mono back"><a href="#work">Back to Partha</a></p>
-      <h2 class="view-title" id="adv-title">Advisoira</h2>
-      <p class="lead">A fee-only investment advisory practice in India. I started it in 2025 and it has been SEBI registered since April 2026. I run the advice, and I built the website, the tools and the data pipelines myself.</p>
+    <section class="content approach" id="approach" aria-labelledby="approach-title">
+      <div class="wrap">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow mono">How I think</p>
+          <h2 id="approach-title">A good analyst stays for <span>the last mile.</span></h2>
+          <p>I like the part after the insight: a better experiment, a changed decision, a pipeline that just runs, a teammate who can own it next time.</p>
+        </div>
+        <div class="principles">
+          <article class="principle" data-reveal><span class="num mono">01 / EVIDENCE</span><h3>Design for a real comparison.</h3><p>Controls and baselines turn an encouraging chart into evidence you can make a decision with.</p></article>
+          <article class="principle" data-reveal data-delay="1"><span class="num mono">02 / OWNERSHIP</span><h3>Stay with the full loop.</h3><p>From metric definition to experiment, forecast, handoff and the next question.</p></article>
+          <article class="principle" data-reveal data-delay="2"><span class="num mono">03 / CRAFT</span><h3>Remove the repetitive work.</h3><p>Automate carefully, add checks, write the runbook. Let people spend time on judgment.</p></article>
+          <article class="principle" data-reveal><span class="num mono">04 / PRODUCT</span><h3>Build for the person using it.</h3><p>Dashboards and tools are products. They need a clear job, a sensible flow and reliable data.</p></article>
+          <article class="principle" data-reveal data-delay="1"><span class="num mono">05 / RANGE</span><h3>Carry ideas between worlds.</h3><p>Quick commerce, logistics, ride and delivery, and pharma sales teach different ways to find leverage.</p></article>
+          <article class="principle" data-reveal data-delay="2"><span class="num mono">06 / PEOPLE</span><h3>Leave the work stronger.</h3><p>Mentor, document and make ownership visible. The best system does not depend on one person.</p></article>
+        </div>
+      </div>
+    </section>
 
-      <section aria-labelledby="a1">
-        <h2 id="a1">How the practice works</h2>
-        <ul class="builds">
-          <li><b>Fee-only</b><span>No commissions, no product sales and no distributor or affiliate income. Clients pay a fee for advice and nothing else.</span></li>
-          <li><b>Discover</b><span>Map goals, cash flow and existing holdings.</span></li>
-          <li><b>Design</b><span>Set the allocation policy, the product filters, the tax logic and the rules for a downturn.</span></li>
-          <li><b>Discipline</b><span>Quarterly reviews covering rebalancing, behaviour and life-event changes.</span></li>
-          <li><b>Who it is for</b><span>Working professionals, founders and operators, and families.</span></li>
-        </ul>
-      </section>
+    <section class="content" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="founder-grid">
+          <div class="founder-copy" data-reveal>
+            <p class="eyebrow mono">The founder side</p>
+            <h2 id="about-title">I like being close to the build.</h2>
+            <p class="founder-lede">At work, I make analysis useful to operators. Outside it, I put that same care into a product of my own.</p>
+            <p>Advisoira is a fee-only investment advisory practice I started in 2025. I built its site, data pipelines and tools myself, learning what it takes to earn trust in a regulated setting: clear language, careful data, and thoughtful product decisions.</p>
+            <a class="button button-quiet" href="https://advisoira.com" target="_blank" rel="noopener noreferrer">Explore Advisoira <span class="arrow">↗</span></a>
+          </div>
+          <div class="founder-side" data-reveal data-delay="1">
+            <h3>What I’ve put into the world</h3>
+            <ul class="build-list">
+              <li><strong>ETF Pulse</strong><span>Live premium and discount to NAV for Indian ETFs, with a daily email digest of alerts.</span></li>
+              <li><strong>Risk profile</strong><span>A guided risk tolerance and capacity assessment with an illustrative allocation.</span></li>
+              <li><strong>Fund overlap</strong><span>A tool that shows how much of one mutual fund’s holdings repeat in another.</span></li>
+              <li><strong>Data stack</strong><span>Python jobs on GitHub Actions, Supabase for data and sign-in, and serverless APIs on Vercel.</span></li>
+            </ul>
+            <p class="disclosure">Advisoira is separate from my employer. This page describes tools I built; it is not investment advice or an offer of advisory services. Investments are subject to market risk.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <section aria-labelledby="a2">
-        <h2 id="a2">What I built</h2>
-        <ul class="builds">
-          <li><b>ETF Pulse</b><span>Live premium and discount to NAV for Indian ETFs, with a daily email digest of alerts.</span></li>
-          <li><b>Risk profile</b><span>Scores risk tolerance and capacity, then shows an example split across equity, debt and liquid funds.</span></li>
-          <li><b>Overlap tool</b><span>Shows how much of one mutual fund's holdings repeat in another.</span></li>
-          <li><b>Diversification check</b><span>Looks at whether a mutual fund portfolio spreads across different holdings or repeats the same ones.</span></li>
-          <li><b>Wealth growth simulator</b><span>Projects corpus, amount invested and gain from a starting sum, monthly SIP, expected return and duration. Illustrative only.</span></li>
-          <li><b>Financial health check</b><span>A free check on where your finances stand.</span></li>
-          <li><b>Guides</b><span>Plain-language pieces on what advisers cost in India, how to choose one, fee-only advice in Mumbai and planning for founders.</span></li>
-          <li><b>Booking</b><span>A 30-minute discovery call with no obligation, booked through the site. An assistant connected to the Advisoira server can list open times and send you to the booking link.</span></li>
-        </ul>
-      </section>
+    <section class="content" aria-labelledby="journey-title">
+      <div class="wrap">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow mono">A working life in motion</p>
+          <h2 id="journey-title">New cities. New questions. <span>Same way of working.</span></h2>
+          <p>Each move changed the context. The through line stayed the same: get to the real problem, then build a way to solve it repeatedly.</p>
+        </div>
+        <div class="journey-scroll" data-reveal><div class="journey-line mono">
+          <div class="stop"><b>Pune</b><span>ZS</span><small>2017—2023</small></div>
+          <div class="stop"><b>Mumbai &amp; Goa</b><span>Swiggy</span><small>2023—2024</small></div>
+          <div class="stop"><b>Bengaluru</b><span>Zepto</span><small>2024—2025</small></div>
+          <div class="stop"><b>Mumbai</b><span>FedEx</span><small>2025—2026</small></div>
+          <div class="stop"><b>Tallinn</b><span>Bolt</span><small>2026—now</small></div>
+        </div></div>
+      </div>
+    </section>
 
-      <section aria-labelledby="a3">
-        <h2 id="a3">How it is built</h2>
-        <dl class="kv">
-          <div><dt>Data</dt><dd>Python jobs on GitHub Actions refresh the data. Supabase holds it and handles sign-in.</dd></div>
-          <div><dt>Serving</dt><dd>Serverless APIs and the site run on Vercel, deployed from Git. Nothing goes live without a commit.</dd></div>
-          <div><dt>Found by people and agents</dt><dd>Sitemap, structured data and an llms.txt summary, so search engines and AI assistants can read the site.</dd></div>
-        </dl>
-      </section>
+    <section class="content capability" aria-labelledby="cap-title">
+      <div class="wrap">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow mono">The toolkit</p>
+          <h2 id="cap-title">Technical range, tied to <span>real decisions.</span></h2>
+        </div>
+        <div class="cap-grid">
+          <article class="cap" data-reveal><h3>Data &amp; engineering</h3><p>SQL · Snowflake · Databricks · PostgreSQL · Oracle · Python · dbt · Git</p></article>
+          <article class="cap" data-reveal data-delay="1"><h3>Decision products</h3><p>Power BI · Looker · Superset · Alteryx · metric design · reporting systems</p></article>
+          <article class="cap" data-reveal data-delay="2"><h3>Methods</h3><p>A/B tests · quasi-experiments · cohort analysis · forecasting · root-cause analysis</p></article>
+          <article class="cap" data-reveal><h3>Education</h3><p>B.Tech in Planning, minor in Finance · College of Engineering Pune, 2017—2021</p></article>
+          <article class="cap" data-reveal data-delay="1"><h3>Credentials</h3><p>SEBI registered investment adviser · FRM Part I (GARP) · Google Data Analytics Certificate</p></article>
+          <article class="cap" data-reveal data-delay="2"><h3>How I build</h3><p>Start close to users, make the assumptions explicit, check the edges, and ship in useful increments.</p></article>
+        </div>
+      </div>
+    </section>
 
-      <section aria-labelledby="a4">
-        <h2 id="a4">Registration and disclosure</h2>
-        <dl class="kv">
-          <div><dt>SEBI</dt><dd>Registered Investment Adviser INA000022321, in the name Partha Harshal Deshpande. Valid from 20 April 2026, perpetual.</dd></div>
-          <div><dt>Complaints</dt><dd><a href="https://scores.sebi.gov.in">SEBI SCORES</a> and <a href="https://smartodr.in">SMARTODR</a>.</dd></div>
-          <div><dt>Visit</dt><dd><a href="https://advisoira.com">advisoira.com</a></dd></div>
-        </dl>
-        <p class="fine">Advisoira is separate from my employer. This page describes the practice and the tools I built. It is not investment advice or an offer of advisory services, and investments are subject to market risk.</p>
-      </section>
-    </div>
-    <footer class="mono">Partha Deshpande. Updated November 2026.</footer>
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
+        <div data-reveal>
+          <p class="eyebrow mono">Hiring · collaborations · good questions</p>
+          <h2 id="contact-title">Have a hard question? <span>Let’s talk.</span></h2>
+          <p>For senior analytics roles, interesting founder/operator conversations, or a problem that needs a thoughtful measurement plan, I’d like to hear from you.</p>
+          <a class="contact-email" href="mailto:partha0799@gmail.com">PARTHA0799@GMAIL.COM</a>
+        </div>
+        <div class="contact-actions" data-reveal data-delay="1">
+          <a class="button button-primary" href="mailto:partha0799@gmail.com?subject=Let%E2%80%99s%20talk">Email Partha <span class="arrow">↗</span></a>
+          <a class="button button-quiet" href="https://www.linkedin.com/in/parthadeshpande" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span class="arrow">↗</span></a>
+          <button class="button button-quiet" id="copy-email" type="button">Copy email address <span aria-hidden="true">⎘</span></button>
+          <span class="mono" id="copy-status" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+    </section>
   </main>
-</div>
+  <footer>
+    <div class="wrap footer-row mono"><span>© 2026 Partha Deshpande · Tallinn, Estonia</span><span><a href="https://www.linkedin.com/in/parthadeshpande" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a> &nbsp;·&nbsp; <a href="https://advisoira.com" target="_blank" rel="noopener noreferrer">Advisoira ↗</a></span></div>
+  </footer>
 
-<script>
-(function () {
-  /* Hover link: a job, a bar segment and a legend item light up together. */
-  var bar = document.getElementById('bar'), legend = document.getElementById('legend');
-  var segs = bar.querySelectorAll('i'), items = legend.querySelectorAll('li'), rows = document.querySelectorAll('.event');
-  function set(i) {
-    var on = i !== null;
-    bar.classList.toggle('live', on); legend.classList.toggle('live', on);
-    [segs, items, rows].forEach(function (list) {
-      Array.prototype.forEach.call(list, function (el) { el.classList.toggle('on', on && +el.getAttribute('data-seg') === i); });
-    });
-  }
-  [segs, items, rows].forEach(function (list) {
-    Array.prototype.forEach.call(list, function (el) {
-      var i = +el.getAttribute('data-seg');
-      el.addEventListener('mouseenter', function () { set(i); });
-      el.addEventListener('mouseleave', function () { set(null); });
-    });
-  });
-  Array.prototype.forEach.call(rows, function (el) { el.setAttribute('tabindex', '0'); var i = +el.getAttribute('data-seg'); el.addEventListener('focus', function () { set(i); }); el.addEventListener('blur', function () { set(null); }); });
-
-  /* Hand-drawn timeline. Starts at the newest job and draws downward as you scroll. */
-  (function () {
-    var log = document.querySelector('.log');
-    if (!log || !log.querySelectorAll) return;
-    var rows = Array.prototype.slice.call(log.querySelectorAll('.event'));
-    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var NS = 'http://www.w3.org/2000/svg';
-    if (!still) document.documentElement.classList.add('js-rev');
-    var svg = null, trace, pencil, you, ring, knots = [], total = 0, ys = [], lens = [], raf = 0;
-
-    function prng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
-    function el(n, c) { var e = document.createElementNS(NS, n); if (c) e.setAttribute('class', c); return e; }
-    function blob(cx, cy, r, rand) {
-      var n = 9, pts = [], i;
-      for (i = 0; i < n; i++) { var a = i / n * 6.2832 + rand() * 0.3, rr = r * (0.86 + rand() * 0.28); pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]); }
-      var d = 'M' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
-      for (i = 0; i < n; i++) {
-        var p0 = pts[(i + n - 1) % n], p1 = pts[i], p2 = pts[(i + 1) % n], p3 = pts[(i + 2) % n];
-        d += 'C' + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + ',' + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) + ' ' + (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + ',' + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) + ' ' + p2[0].toFixed(1) + ',' + p2[1].toFixed(1);
+  <script>
+    (function () {
+      var items = document.querySelectorAll('[data-reveal]');
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced || !('IntersectionObserver' in window)) {
+        items.forEach(function (item) { item.classList.add('visible'); });
+      } else {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+        items.forEach(function (item) { observer.observe(item); });
       }
-      return d + 'Z';
-    }
-    function route(nodes, seed, wob) {
-      var rand = prng(seed), d = 'M' + nodes[0][0] + ',0', px = nodes[0][0], py = 0, i;
-      for (i = 0; i < nodes.length; i++) {
-        var nx = nodes[i][0], ny = nodes[i][1], dy = ny - py;
-        d += 'C' + (px + (rand() - .5) * wob).toFixed(1) + ',' + (py + dy * .55).toFixed(1) + ' ' + (nx + (rand() - .5) * wob).toFixed(1) + ',' + (ny - dy * .5).toFixed(1) + ' ' + nx.toFixed(1) + ',' + ny.toFixed(1);
-        px = nx; py = ny;
-      }
-      return d;
-    }
-    function build() {
-      if (svg) svg.remove();
-      knots = []; ys = []; lens = [];
-      var W = parseFloat(getComputedStyle(log).paddingLeft) || 56, H = log.scrollHeight;
-      var L = W * 0.14, R = W * 0.86, nodes = [];
-      rows.forEach(function (r, i) { var y = r.offsetTop + 34; ys.push(y); nodes.push([i % 2 ? R : L, y]); });
-      svg = el('svg'); svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('aria-hidden', 'true');
-      var d = route(nodes, 7, W * 0.85), d2 = route(nodes, 19, W * 0.95);
-      pencil = el('path', 'pencil'); pencil.setAttribute('d', d2); pencil.setAttribute('transform', 'translate(2.5,1)');
-      trace = el('path', 'trace'); trace.setAttribute('d', d);
-      svg.appendChild(pencil); svg.appendChild(trace);
-      var probe = el('path'); svg.appendChild(probe);
-      nodes.forEach(function (n, i) {
-        probe.setAttribute('d', route(nodes.slice(0, i + 1), 7, W * 0.5)); lens.push(probe.getTotalLength());
-        var k = el('path', 'knot' + (i === 0 ? ' first' : '')); k.setAttribute('d', blob(n[0], n[1], i === 0 ? 7 : 6.5, prng(31 + i))); svg.appendChild(k); knots.push(k);
+      var copy = document.getElementById('copy-email');
+      var status = document.getElementById('copy-status');
+      copy.addEventListener('click', function () {
+        navigator.clipboard.writeText('partha0799@gmail.com').then(function () {
+          status.textContent = 'Email copied';
+          window.setTimeout(function () { status.textContent = ''; }, 2200);
+        }).catch(function () {
+          status.textContent = 'Please select partha0799@gmail.com';
+        });
       });
-      svg.removeChild(probe);
-      total = trace.getTotalLength();
-      trace.style.strokeDasharray = total; pencil.style.strokeDasharray = pencil.getTotalLength();
-      ring = el('circle', 'you-ring'); ring.setAttribute('r', 11); you = el('circle', 'you'); you.setAttribute('r', 4.5);
-      svg.appendChild(ring); svg.appendChild(you);
-      log.insertBefore(svg, log.firstChild);
-      update();
-    }
-    function lenAtY(y) {
-      if (y <= 0) return 0;
-      for (var i = 0; i < ys.length; i++) {
-        if (y <= ys[i]) { var y0 = i ? ys[i - 1] : 0, l0 = i ? lens[i - 1] : 0; return l0 + (lens[i] - l0) * ((y - y0) / (ys[i] - y0)); }
-      }
-      return total;
-    }
-    function update() {
-      raf = 0; if (!svg) return;
-      var drawn = still ? total : lenAtY(window.innerHeight * 0.78 - log.getBoundingClientRect().top);
-      drawn = Math.max(0, Math.min(total, drawn));
-      trace.style.strokeDashoffset = total - drawn;
-      var pl = pencil.getTotalLength(); pencil.style.strokeDashoffset = pl - pl * (drawn / total);
-      var pt = trace.getPointAtLength(Math.max(drawn, 0.01)); you.setAttribute('cx', pt.x); you.setAttribute('cy', pt.y); ring.setAttribute('cx', pt.x); ring.setAttribute('cy', pt.y);
-      rows.forEach(function (r, i) { if (still || drawn >= lens[i] - 2) { r.classList.add('seen'); knots[i].classList.add('seen'); } });
-    }
-    function tick() { if (!raf) raf = requestAnimationFrame(update); }
-    build();
-    window.addEventListener('scroll', tick, { passive: true });
-    window.addEventListener('resize', build);
-    window.addEventListener('load', build);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
-    if (window.ResizeObserver) { var last = log.scrollHeight; new ResizeObserver(function () { if (log.scrollHeight !== last) { last = log.scrollHeight; build(); } }).observe(log); }
-  })();
-
-  /* Cursor trail: a thin route that follows the pointer and fades out. Mouse only, off for reduced motion. */
-  var cv = document.getElementById('trail');
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var fine = window.matchMedia('(hover: hover) and (pointer: fine)');
-  if (cv && cv.getContext && fine.matches && !reduce.matches) {
-    var cx = cv.getContext('2d'), pts = [], raf = 0, W = 0, H = 0, dpr = 1, LIFE = 1100, last = null;
-    function size() { dpr = Math.min(window.devicePixelRatio || 1, 2); W = window.innerWidth; H = window.innerHeight; cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0); }
-    size(); window.addEventListener('resize', size);
-    function col() { return getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#2A45D6'; }
-    window.addEventListener('pointermove', function (e) {
-      if (e.pointerType && e.pointerType !== 'mouse') return;
-      var t = performance.now();
-      if (!last || Math.hypot(e.clientX - last.x, e.clientY - last.y) > 14) { pts.push({ x: e.clientX, y: e.clientY, t: t, stop: false }); last = { x: e.clientX, y: e.clientY }; }
-      if (!raf) raf = requestAnimationFrame(draw);
-    }, { passive: true });
-    function draw() {
-      var now = performance.now(), c = col(); cx.clearRect(0, 0, W, H);
-      pts = pts.filter(function (p) { return now - p.t < LIFE; });
-      cx.lineWidth = 1.5; cx.lineJoin = 'round'; cx.strokeStyle = c; cx.fillStyle = c;
-      for (var i = 1; i < pts.length; i++) {
-        var a = pts[i - 1], b = pts[i], k = 1 - (now - b.t) / LIFE;
-        cx.globalAlpha = Math.max(0, k) * 0.7; cx.beginPath(); cx.moveTo(a.x, a.y); cx.lineTo(b.x, b.y); cx.stroke();
-      }
-      for (var j = 0; j < pts.length; j++) {
-        var q = pts[j], kk = Math.max(0, 1 - (now - q.t) / LIFE);
-        cx.globalAlpha = kk * 0.9; cx.beginPath(); cx.arc(q.x, q.y, 2 + 2 * kk, 0, 6.2832); cx.fill();
-      }
-      cx.globalAlpha = 1;
-      if (pts.length) { raf = requestAnimationFrame(draw); } else { raf = 0; cx.clearRect(0, 0, W, H); }
-    }
-  }
-})();
-(function () {
-  var btn = document.getElementById('copy');
-  var out = document.getElementById('status');
-  btn.addEventListener('click', function () {
-    var addr = document.getElementById('mail').textContent;
-    try {
-      navigator.clipboard.writeText(addr).then(
-        function () { out.textContent = 'Copied ' + addr; },
-        function () { out.textContent = 'Could not copy. Select the address above instead.'; }
-      );
-    } catch (e) {
-      out.textContent = 'Could not copy. Select the address above instead.';
-    }
-  });
-})();
-
-  /* Two views in one page: home, and the full Advisoira page at #/advisoira. */
-  (function () {
-    var view = document.getElementById('adv-view');
-    if (!view) return;
-    var homeTitle = document.title;
-    function show() {
-      var adv = location.hash.indexOf('#/advisoira') === 0;
-      document.body.classList.toggle('view-adv', adv);
-      view.hidden = !adv;
-      document.title = adv ? 'Advisoira | Partha Deshpande' : homeTitle;
-      if (adv) { window.scrollTo(0, 0); }
-      else {
-        window.dispatchEvent(new Event('resize'));
-        var t = location.hash.length > 1 && !/^#\//.test(location.hash) ? document.querySelector(location.hash) : null;
-        if (t) setTimeout(function () { t.scrollIntoView(); }, 60); else window.scrollTo(0, 0);
-      }
-    }
-    window.addEventListener('hashchange', show);
-    show();
-  })();
-</script>
+    })();
+  </script>
 </body>
 </html>
