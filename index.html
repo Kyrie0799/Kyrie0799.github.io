@@ -139,6 +139,12 @@ footer { padding: 24px 0 48px; color: var(--muted); border-top: 1px solid var(--
   .event, a, button.copy { transition: none; }
   .js-rev .event { opacity: 1; transform: none; }
 }
+#adv-view[hidden] { display: none; }
+body.view-adv #home { display: none; }
+.back { margin: 0 0 28px; }
+.view-title { font-family: var(--serif); font-size: clamp(2rem, 4.4vw, 2.8rem); font-weight: 500; color: var(--ink); margin: 0 0 18px; }
+#adv-view section { padding-top: 34px; padding-bottom: 8px; }
+#adv-h a { color: inherit; }
 </style>
 <link rel="canonical" href="https://kyrie0799.github.io/">
 <meta name="description" content="Partha Deshpande is a data analyst at Bolt in Tallinn and the founder of Advisoira. Nine years across experimentation, forecasting and pipeline automation at ZS, Swiggy, Zepto, FedEx and Bolt.">
@@ -163,7 +169,7 @@ footer { padding: 24px 0 48px; color: var(--muted); border-top: 1px solid var(--
     <nav class="mono" aria-label="Sections">
       <a href="#approach">Approach</a>
       <a href="#work">Work</a>
-      <a href="#advisoira">Advisoira</a>
+      <a href="#/advisoira">Advisoira</a>
       <a href="#tools">Tools and training</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -175,6 +181,7 @@ footer { padding: 24px 0 48px; color: var(--muted); border-top: 1px solid var(--
   </aside>
 
   <main id="main">
+    <div id="home">
     <p class="hero">I turn messy marketplace data into decisions: experiments, forecasts and the automation behind pricing and growth. Five cities, five companies, nine years.</p>
 
     <section aria-labelledby="where-h">
@@ -245,7 +252,7 @@ footer { padding: 24px 0 48px; color: var(--muted); border-top: 1px solid var(--
     </section>
 
     <section id="advisoira" aria-labelledby="adv-h">
-      <h2 id="adv-h">Advisoira</h2>
+      <h2 id="adv-h"><a href="#/advisoira">Advisoira, the full page</a></h2>
       <p class="lead">A fee-only investment advisory practice, registered with SEBI and started in 2025. I built the site, the tools and the data pipelines myself.</p>
       <ul class="builds">
         <li><b>ETF Pulse</b><span>Live premium and discount to NAV for Indian ETFs, with a daily email digest of alerts.</span></li>
@@ -278,6 +285,57 @@ footer { padding: 24px 0 48px; color: var(--muted); border-top: 1px solid var(--
       <p id="status" class="mono muted" role="status" aria-live="polite" style="min-height:1.4em;margin:12px 0 0"></p>
     </section>
 
+</div>
+
+    <div id="adv-view" hidden>
+      <p class="mono back"><a href="#work">Back to Partha</a></p>
+      <h2 class="view-title" id="adv-title">Advisoira</h2>
+      <p class="lead">A fee-only investment advisory practice in India. I started it in 2025 and it has been SEBI registered since April 2026. I run the advice, and I built the website, the tools and the data pipelines myself.</p>
+
+      <section aria-labelledby="a1">
+        <h2 id="a1">How the practice works</h2>
+        <ul class="builds">
+          <li><b>Fee-only</b><span>No commissions, no product sales and no distributor or affiliate income. Clients pay a fee for advice and nothing else.</span></li>
+          <li><b>Discover</b><span>Map goals, cash flow and existing holdings.</span></li>
+          <li><b>Design</b><span>Set the allocation policy, the product filters, the tax logic and the rules for a downturn.</span></li>
+          <li><b>Discipline</b><span>Quarterly reviews covering rebalancing, behaviour and life-event changes.</span></li>
+          <li><b>Who it is for</b><span>Working professionals, founders and operators, and families.</span></li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="a2">
+        <h2 id="a2">What I built</h2>
+        <ul class="builds">
+          <li><b>ETF Pulse</b><span>Live premium and discount to NAV for Indian ETFs, with a daily email digest of alerts.</span></li>
+          <li><b>Risk profile</b><span>Scores risk tolerance and capacity, then shows an example split across equity, debt and liquid funds.</span></li>
+          <li><b>Overlap tool</b><span>Shows how much of one mutual fund's holdings repeat in another.</span></li>
+          <li><b>Diversification check</b><span>Looks at whether a mutual fund portfolio spreads across different holdings or repeats the same ones.</span></li>
+          <li><b>Wealth growth simulator</b><span>Projects corpus, amount invested and gain from a starting sum, monthly SIP, expected return and duration. Illustrative only.</span></li>
+          <li><b>Financial health check</b><span>A free check on where your finances stand.</span></li>
+          <li><b>Guides</b><span>Plain-language pieces on what advisers cost in India, how to choose one, fee-only advice in Mumbai and planning for founders.</span></li>
+          <li><b>Booking</b><span>A 30-minute discovery call with no obligation, booked through the site. An assistant connected to the Advisoira server can list open times and send you to the booking link.</span></li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="a3">
+        <h2 id="a3">How it is built</h2>
+        <dl class="kv">
+          <div><dt>Data</dt><dd>Python jobs on GitHub Actions refresh the data. Supabase holds it and handles sign-in.</dd></div>
+          <div><dt>Serving</dt><dd>Serverless APIs and the site run on Vercel, deployed from Git. Nothing goes live without a commit.</dd></div>
+          <div><dt>Found by people and agents</dt><dd>Sitemap, structured data and an llms.txt summary, so search engines and AI assistants can read the site.</dd></div>
+        </dl>
+      </section>
+
+      <section aria-labelledby="a4">
+        <h2 id="a4">Registration and disclosure</h2>
+        <dl class="kv">
+          <div><dt>SEBI</dt><dd>Registered Investment Adviser INA000022321, in the name Partha Harshal Deshpande. Valid from 20 April 2026, perpetual.</dd></div>
+          <div><dt>Complaints</dt><dd><a href="https://scores.sebi.gov.in">SEBI SCORES</a> and <a href="https://smartodr.in">SMARTODR</a>.</dd></div>
+          <div><dt>Visit</dt><dd><a href="https://advisoira.com">advisoira.com</a></dd></div>
+        </dl>
+        <p class="fine">Advisoira is separate from my employer. This page describes the practice and the tools I built. It is not investment advice or an offer of advisory services, and investments are subject to market risk.</p>
+      </section>
+    </div>
     <footer class="mono">Partha Deshpande. Updated November 2026.</footer>
   </main>
 </div>
@@ -430,6 +488,27 @@ footer { padding: 24px 0 48px; color: var(--muted); border-top: 1px solid var(--
     }
   });
 })();
+
+  /* Two views in one page: home, and the full Advisoira page at #/advisoira. */
+  (function () {
+    var view = document.getElementById('adv-view');
+    if (!view) return;
+    var homeTitle = document.title;
+    function show() {
+      var adv = location.hash.indexOf('#/advisoira') === 0;
+      document.body.classList.toggle('view-adv', adv);
+      view.hidden = !adv;
+      document.title = adv ? 'Advisoira | Partha Deshpande' : homeTitle;
+      if (adv) { window.scrollTo(0, 0); }
+      else {
+        window.dispatchEvent(new Event('resize'));
+        var t = location.hash.length > 1 && !/^#\//.test(location.hash) ? document.querySelector(location.hash) : null;
+        if (t) setTimeout(function () { t.scrollIntoView(); }, 60); else window.scrollTo(0, 0);
+      }
+    }
+    window.addEventListener('hashchange', show);
+    show();
+  })();
 </script>
 </body>
 </html>

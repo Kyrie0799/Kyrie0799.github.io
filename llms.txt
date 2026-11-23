@@ -9,6 +9,9 @@
 - Swiggy Instamart, Senior Business Associate (Jun 2023 to Aug 2024): defined Orders per Day and GMV, A/B tests and root-cause analyses.
 - ZS, Decision Analytics Associate (May 2021 to Jun 2023): dashboards for 2,000+ sales reps, Oracle SQL to Alteryx saving 6 days a month.
 
+## Advisoira
+Fee-only SEBI Registered Investment Adviser (INA000022321, registered name Partha Harshal Deshpande, valid from 20 April 2026). No commissions or product sales. Built by Partha: ETF Pulse (ETF premium and discount to NAV with a daily digest), risk profile, mutual fund overlap and diversification tools, wealth growth simulator, guides, and 30-minute discovery call booking. Full page: https://kyrie0799.github.io/#/advisoira . Not investment advice.
+
 ## Skills
 SQL (Snowflake, Databricks, PostgreSQL, Oracle), dbt, Git, Python, Power BI, Looker, Superset, Alteryx.
 
