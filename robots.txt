@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kyrie0799.github.io/sitemap.xml

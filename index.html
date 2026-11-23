@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partha Deshpande</title>
+<meta name="description" content="Partha Deshpande is a senior data analyst at Bolt in Tallinn, with earlier roles at FedEx, Zepto, Swiggy and ZS, and the founder of Advisoira, a SEBI registered investment adviser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a quiet portfolio. Fixed left rail with name and links, one reading column on the right.
+   Type pair: Newsreader (text) with Geist Mono (dates, labels). One bold element: the hero sentence. */
+:root {
+  --ground: #F3EDE1;
+  --ink: #1D1A15;
+  --muted: #62594B;
+  --line: #DCD2BE;
+  --hover: #EAE2D0;
+  --accent: #2A45D6;
+  --serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+  --mono: 'Geist Mono', ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --ground: #14120E; --ink: #EDE6D8; --muted: #A59B89; --line: #2D2921; --hover: #1D1A14; --accent: #94A6FF;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--ground); color: var(--ink);
+  font-family: var(--serif); font-size: 1.125rem; line-height: 1.6; font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-decoration-thickness: 1px; text-underline-offset: 0.25em; transition: text-decoration-color .15s; }
+a:hover { text-decoration-color: var(--ink); }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--ground); padding: 8px 12px; z-index: 10; }
+.skip:focus { left: 8px; }
+.mono { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0; line-height: 1.5; }
+.muted { color: var(--muted); }
+
+.page { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); gap: 0 clamp(40px, 8vw, 120px); }
+.rail { position: sticky; top: 0; align-self: start; padding: 56px 0; display: flex; flex-direction: column; gap: 28px; min-height: 100vh; }
+.rail .name { font-size: 1.35rem; font-weight: 500; line-height: 1.2; margin: 0; }
+.rail p { margin: 6px 0 0; color: var(--muted); font-size: 1rem; line-height: 1.45; }
+.rail nav, .rail .links { display: flex; flex-direction: column; gap: 6px; }
+.rail a { text-decoration: none; width: fit-content; }
+.rail nav a:hover, .rail .links a:hover { text-decoration: underline; text-decoration-color: var(--ink); }
+.rail .where { margin-top: auto; display: flex; gap: 10px; align-items: baseline; }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); flex: none; transform: translateY(-1px); animation: ping 2s ease-out 0.5s 3; }
+@keyframes ping { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 70%, transparent); } 100% { box-shadow: 0 0 0 12px transparent; } }
+
+main { padding: 56px 0 40px; min-width: 0; }
+.hero { margin: 0 0 clamp(44px, 7vw, 84px); font-size: clamp(1.7rem, 4.2vw, 2.7rem); line-height: 1.18; font-weight: 400; letter-spacing: -0.012em; max-width: 21em; text-wrap: pretty; }
+
+section { padding: 0 0 clamp(44px, 7vw, 76px); }
+h2 { margin: 0 0 20px; font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--muted); }
+.lead { max-width: 33em; margin: 0 0 18px; }
+
+/* years by city */
+.bar { display: flex; gap: 3px; height: 22px; align-items: center; margin-bottom: 14px; }
+.bar i { display: block; height: 10px; background: var(--ink); min-width: 6px; opacity: .85; cursor: default; transition: height .25s cubic-bezier(.2,.8,.2,1), opacity .2s, background-color .2s; }
+.bar i:nth-child(even) { opacity: .4; }
+.bar i.now { background: var(--accent); opacity: 1; }
+.bar.live i { opacity: .15; }
+.bar.live i.on { opacity: 1; height: 22px; background: var(--accent); }
+.legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.legend li { display: flex; gap: 8px; transition: opacity .2s; }
+.legend.live li { opacity: .35; }
+.legend.live li.on { opacity: 1; }
+.legend.live li.on span:first-child { color: var(--accent); }
+.event { position: relative; }
+/* hand-drawn timeline: path starts at Bolt (now) and draws downward as you scroll */
+.log { position: relative; padding-left: clamp(64px, 13vw, 140px); }
+.log > svg { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; }
+.trace { fill: none; stroke: var(--ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.pencil { fill: none; stroke: var(--ink); stroke-width: 1; stroke-linecap: round; opacity: .3; }
+.knot { fill: var(--ground); stroke: var(--ink); stroke-width: 1.6; opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(.4); transition: opacity .3s, transform .5s cubic-bezier(.2,1.4,.3,1); }
+.knot.seen { opacity: 1; transform: scale(1); }
+.knot.first { fill: var(--accent); stroke: var(--accent); }
+.you { fill: var(--accent); }
+.you-ring { fill: none; stroke: var(--accent); stroke-width: 1.5; opacity: .4; }
+.js-rev .event { opacity: 0; transform: translateY(28px) scale(.97); transform-origin: left top; }
+.js-rev .event.seen { opacity: 1; transform: none; transition: opacity .5s ease, transform .7s cubic-bezier(.2,1.25,.3,1); }
+.js-rev .log:hover .event.seen { opacity: .5; }
+.js-rev .log .event.seen:hover { opacity: 1; }
+#trail { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 20; }
+
+/* work */
+.log { list-style: none; margin: 0; }
+.log:hover .event { opacity: .5; }
+.log .event:hover { opacity: 1; }
+.event { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); gap: 4px 28px; padding: 22px 0 26px; border-top: 0; transition: opacity .2s; }
+.event .when { color: var(--muted); padding-top: 5px; }
+.event h3 { margin: 0; font-size: 1.2rem; font-weight: 500; line-height: 1.3; }
+.event h3 span { color: var(--muted); font-weight: 400; }
+.event p { margin: 6px 0 0; color: var(--muted); max-width: 34em; font-size: 1.02rem; line-height: 1.55; }
+.pill { font-family: var(--mono); font-size: 0.72rem; border: 1px solid var(--line); border-radius: 99px; padding: 1px 8px; margin-left: 8px; color: var(--muted); vertical-align: 2px; white-space: nowrap; display: inline-block; }
+
+/* advisoira */
+.builds { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.builds li { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); gap: 4px 28px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.builds b { font-weight: 500; }
+.builds span { color: var(--muted); font-size: 1.02rem; max-width: 34em; }
+.fine { color: var(--muted); font-size: 0.92rem; max-width: 40em; margin: 20px 0 0; }
+
+/* kv */
+.kv { margin: 0; border-top: 1px solid var(--line); }
+.kv div { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); gap: 4px 28px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.kv dt { color: var(--muted); font-family: var(--mono); font-size: 0.78rem; padding-top: 5px; }
+.kv dd { margin: 0; max-width: 34em; }
+
+/* contact */
+.mail { font-size: clamp(1.5rem, 4.4vw, 2.2rem); font-weight: 400; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 16px; align-items: center; }
+button.copy { font-family: var(--mono); font-size: 0.78rem; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 99px; padding: 10px 16px; min-height: 44px; cursor: pointer; transition: background .15s, border-color .15s; }
+button.copy:hover { background: var(--hover); border-color: var(--ink); }
+footer { padding: 24px 0 48px; color: var(--muted); border-top: 1px solid var(--line); }
+
+@media (max-width: 900px) {
+  .page { grid-template-columns: minmax(0, 1fr); }
+  .rail { position: static; min-height: 0; padding: 32px 0 0; gap: 18px; }
+  .rail nav { flex-direction: row; flex-wrap: wrap; gap: 6px 18px; }
+  .rail .links { flex-direction: row; gap: 18px; }
+  .rail .where { margin-top: 0; }
+  main { padding-top: 40px; }
+}
+@media (max-width: 600px) {
+  .event, .builds li, .kv div { grid-template-columns: minmax(0, 1fr); }
+  .event { gap: 2px; }
+  .event .when { padding-top: 0; }
+  .kv dt { padding-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .dot { animation: none; }
+  .event, a, button.copy { transition: none; }
+  .js-rev .event { opacity: 1; transform: none; }
+}
+</style>
+<link rel="canonical" href="https://kyrie0799.github.io/">
+<meta name="description" content="Partha Deshpande is a data analyst at Bolt in Tallinn and the founder of Advisoira. Nine years across experimentation, forecasting and pipeline automation at ZS, Swiggy, Zepto, FedEx and Bolt.">
+<meta property="og:title" content="Partha Deshpande, data analyst">
+<meta property="og:description" content="Experiments, forecasts and the automation behind pricing and growth. Five cities, five companies.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://kyrie0799.github.io/">
+<meta name="robots" content="index, follow">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Partha Deshpande","jobTitle":"Senior Data Analyst","worksFor":{"@type":"Organization","name":"Bolt"},"homeLocation":{"@type":"Place","name":"Tallinn, Estonia"},"alumniOf":{"@type":"CollegeOrUniversity","name":"COEP"},"knowsAbout":["Experimentation","A/B testing","Forecasting","SQL","Python","dbt","Power BI","Looker","Data pipelines"],"url":"https://kyrie0799.github.io/","sameAs":["https://www.linkedin.com/in/parthadeshpande","https://advisoira.com"]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<canvas id="trail" aria-hidden="true"></canvas>
+<div class="page">
+  <aside class="rail">
+    <div>
+      <h1 class="name">Partha Deshpande</h1>
+      <p>Data analyst. Founder of Advisoira.</p>
+    </div>
+    <nav class="mono" aria-label="Sections">
+      <a href="#approach">Approach</a>
+      <a href="#work">Work</a>
+      <a href="#advisoira">Advisoira</a>
+      <a href="#tools">Tools and training</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="links mono">
+      <a href="https://www.linkedin.com/in/parthadeshpande">LinkedIn</a>
+      <a href="https://advisoira.com">advisoira.com</a>
+    </div>
+    <div class="where mono" aria-label="Current location"><span class="dot" aria-hidden="true"></span><span>Tallinn, Estonia<br><span class="muted">Bolt, since Sep 2026</span></span></div>
+  </aside>
+
+  <main id="main">
+    <p class="hero">I turn messy marketplace data into decisions: experiments, forecasts and the automation behind pricing and growth. Five cities, five companies, nine years.</p>
+
+    <section aria-labelledby="where-h">
+      <h2 id="where-h">Time spent in each city</h2>
+      <div class="bar" id="bar" role="img" aria-label="Pune about 70 months, Mumbai 14, Bengaluru 7, Mumbai 17, Tallinn 3 so far">
+        <i data-seg="0" style="flex:70"></i><i data-seg="1" style="flex:14"></i><i data-seg="2" style="flex:7"></i><i data-seg="3" style="flex:17"></i><i data-seg="4" class="now" style="flex:3"></i>
+      </div>
+      <ul class="legend mono" id="legend">
+        <li data-seg="0"><span>Pune</span><span class="muted">2017 to 2023</span></li>
+        <li data-seg="1"><span>Mumbai</span><span class="muted">2023 to 2024</span></li>
+        <li data-seg="2"><span>Bengaluru</span><span class="muted">2024 to 2025</span></li>
+        <li data-seg="3"><span>Mumbai</span><span class="muted">2025 to 2026</span></li>
+        <li data-seg="4"><span>Tallinn</span><span class="muted">2026 to now</span></li>
+      </ul>
+    </section>
+
+    <section id="approach" aria-labelledby="appr-h">
+      <h2 id="appr-h">What I do differently</h2>
+      <ul class="builds">
+        <li><b>Prove it with a control</b><span>I measure impact against a comparison group, not a before-and-after. At Zepto, retention rose 300 bps and reactivation rose 10% against a control.</span></li>
+        <li><b>Own the whole loop</b><span>I define the metric, design the experiment, forecast the outcome and automate the pipeline. At Swiggy I wrote the Orders per Day and GMV definitions from scratch. At Bolt I run incentive experiments and the quarterly budget.</span></li>
+        <li><b>Cut the manual work</b><span>At FedEx, four audit pipelines took a two-hour run down to 15 minutes. At ZS, moving Oracle SQL to Alteryx saved 6 days a month.</span></li>
+        <li><b>Ship the product, not just the analysis</b><span>I built Advisoira alone: the site, the ETF, risk and overlap tools, and the data pipelines behind them, in a regulated field.</span></li>
+        <li><b>Carry it across markets</b><span>Quick commerce, logistics, ride and delivery, and pharma sales across five cities, so a method has to hold up in more than one setting.</span></li>
+        <li><b>Make it repeatable</b><span>I write the SOPs and mentor analysts, and led a 36-person sales team, so the work still runs when I am not in the room.</span></li>
+      </ul>
+    </section>
+
+    <section id="work" aria-labelledby="work-h">
+      <h2 id="work-h">Work</h2>
+      <ol class="log">
+        <li class="event" data-seg="4">
+          <div class="when mono">Sep 2026 to now<br>Tallinn</div>
+          <div>
+            <h3>Senior Data Analyst <span>at Bolt</span></h3>
+            <p>Designing and analysing incentive experiments, building the 2027 quarterly budget, and leading analytics for the Delivery-as-a-Service vertical.</p>
+          </div>
+        </li>
+        <li class="event" data-seg="3">
+          <div class="when mono">Mar 2025 to Aug 2026<br>Mumbai</div>
+          <div>
+            <h3>Senior Data Analyst 2 <span>at FedEx</span></h3>
+            <p>Built four audit pipelines in Python and VBA that cut runtime 88%, from 2 hours to 15 minutes, with no manual steps. Designed Apollo, a pricing monitor that alerts owners to overwrites. Wrote the SOPs and validation checks, and mentored analysts.</p>
+          </div>
+        </li>
+        <li class="event" data-seg="2">
+          <div class="when mono">Aug 2024 to Mar 2025<br>Bengaluru</div>
+          <div>
+            <h3>Senior Analytics Manager <span>at Zepto</span></h3>
+            <p>Found the causes of churn through cohort analysis and built CRM journeys around them. Against a control group, retention rose 300 bps and reactivation rose 10%. Also modelled ARPU by area and led a category revenue forecast.</p>
+          </div>
+        </li>
+        <li class="event" data-seg="1">
+          <div class="when mono">Jun 2023 to Aug 2024<br>Mumbai and Goa</div>
+          <div>
+            <h3>Senior Business Associate <span>at Swiggy Instamart</span> <span class="pill">promoted from Business Associate</span></h3>
+            <p>Defined Orders per Day and GMV from scratch, with the OKRs and baselines for two cities. Led a 36-person sales team and ran A/B tests and root-cause analyses on unit economics.</p>
+          </div>
+        </li>
+        <li class="event" data-seg="0">
+          <div class="when mono">May 2021 to Jun 2023<br>Pune</div>
+          <div>
+            <h3>Decision Analytics Associate <span>at ZS</span></h3>
+            <p>Built Power BI dashboards for 2,000+ pharma sales reps and designed incentive compensation plans. Moved workflows from Oracle SQL to Alteryx, saving 6 days a month. Designed call planning for 1,500+ reps; 87% improved.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="advisoira" aria-labelledby="adv-h">
+      <h2 id="adv-h">Advisoira</h2>
+      <p class="lead">A fee-only investment advisory practice, registered with SEBI and started in 2025. I built the site, the tools and the data pipelines myself.</p>
+      <ul class="builds">
+        <li><b>ETF Pulse</b><span>Live premium and discount to NAV for Indian ETFs, with a daily email digest of alerts.</span></li>
+        <li><b>Risk profile</b><span>Scores risk tolerance and capacity, then shows an example split across equity, debt and liquid funds.</span></li>
+        <li><b>Overlap tool</b><span>Shows how much of one mutual fund's holdings repeat in another.</span></li>
+        <li><b>Stack</b><span>Python jobs on GitHub Actions, Supabase for data and sign-in, serverless APIs on Vercel.</span></li>
+      </ul>
+      <p class="fine">Advisoira is separate from my employer. This page describes tools I built. It is not investment advice or an offer of advisory services, and investments are subject to market risk.</p>
+    </section>
+
+    <section id="tools" aria-labelledby="tools-h">
+      <h2 id="tools-h">Tools and training</h2>
+      <dl class="kv">
+        <div><dt>Data</dt><dd>SQL on Snowflake, Databricks, PostgreSQL and Oracle. dbt, Git, Python.</dd></div>
+        <div><dt>Reporting</dt><dd>Power BI, Looker, Superset, Alteryx.</dd></div>
+        <div><dt>Methods</dt><dd>A/B tests and quasi-experiments, cohort analysis, forecasting, root-cause analysis, metric design.</dd></div>
+        <div><dt>AI tools</dt><dd>Claude, ChatGPT, Codex and Cursor.</dd></div>
+        <div><dt>Education</dt><dd>B.Tech in Planning, minor in Finance, College of Engineering Pune, 2017 to 2021.</dd></div>
+        <div><dt>Credentials</dt><dd>SEBI registered investment adviser. FRM Part I (GARP). Google Data Analytics Certificate.</dd></div>
+      </dl>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact</h2>
+      <a class="mail" href="mailto:partha0799@gmail.com" id="mail">partha0799@gmail.com</a>
+      <div class="actions">
+        <button class="copy" type="button" id="copy">Copy email address</button>
+        <a class="mono" href="https://www.linkedin.com/in/parthadeshpande">LinkedIn</a>
+      </div>
+      <p id="status" class="mono muted" role="status" aria-live="polite" style="min-height:1.4em;margin:12px 0 0"></p>
+    </section>
+
+    <footer class="mono">Partha Deshpande. Updated November 2026.</footer>
+  </main>
+</div>
+
+<script>
+(function () {
+  /* Hover link: a job, a bar segment and a legend item light up together. */
+  var bar = document.getElementById('bar'), legend = document.getElementById('legend');
+  var segs = bar.querySelectorAll('i'), items = legend.querySelectorAll('li'), rows = document.querySelectorAll('.event');
+  function set(i) {
+    var on = i !== null;
+    bar.classList.toggle('live', on); legend.classList.toggle('live', on);
+    [segs, items, rows].forEach(function (list) {
+      Array.prototype.forEach.call(list, function (el) { el.classList.toggle('on', on && +el.getAttribute('data-seg') === i); });
+    });
+  }
+  [segs, items, rows].forEach(function (list) {
+    Array.prototype.forEach.call(list, function (el) {
+      var i = +el.getAttribute('data-seg');
+      el.addEventListener('mouseenter', function () { set(i); });
+      el.addEventListener('mouseleave', function () { set(null); });
+    });
+  });
+  Array.prototype.forEach.call(rows, function (el) { el.setAttribute('tabindex', '0'); var i = +el.getAttribute('data-seg'); el.addEventListener('focus', function () { set(i); }); el.addEventListener('blur', function () { set(null); }); });
+
+  /* Hand-drawn timeline. Starts at the newest job and draws downward as you scroll. */
+  (function () {
+    var log = document.querySelector('.log');
+    if (!log || !log.querySelectorAll) return;
+    var rows = Array.prototype.slice.call(log.querySelectorAll('.event'));
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var NS = 'http://www.w3.org/2000/svg';
+    if (!still) document.documentElement.classList.add('js-rev');
+    var svg = null, trace, pencil, you, ring, knots = [], total = 0, ys = [], lens = [], raf = 0;
+
+    function prng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+    function el(n, c) { var e = document.createElementNS(NS, n); if (c) e.setAttribute('class', c); return e; }
+    function blob(cx, cy, r, rand) {
+      var n = 9, pts = [], i;
+      for (i = 0; i < n; i++) { var a = i / n * 6.2832 + rand() * 0.3, rr = r * (0.86 + rand() * 0.28); pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]); }
+      var d = 'M' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
+      for (i = 0; i < n; i++) {
+        var p0 = pts[(i + n - 1) % n], p1 = pts[i], p2 = pts[(i + 1) % n], p3 = pts[(i + 2) % n];
+        d += 'C' + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + ',' + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) + ' ' + (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + ',' + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) + ' ' + p2[0].toFixed(1) + ',' + p2[1].toFixed(1);
+      }
+      return d + 'Z';
+    }
+    function route(nodes, seed, wob) {
+      var rand = prng(seed), d = 'M' + nodes[0][0] + ',0', px = nodes[0][0], py = 0, i;
+      for (i = 0; i < nodes.length; i++) {
+        var nx = nodes[i][0], ny = nodes[i][1], dy = ny - py;
+        d += 'C' + (px + (rand() - .5) * wob).toFixed(1) + ',' + (py + dy * .55).toFixed(1) + ' ' + (nx + (rand() - .5) * wob).toFixed(1) + ',' + (ny - dy * .5).toFixed(1) + ' ' + nx.toFixed(1) + ',' + ny.toFixed(1);
+        px = nx; py = ny;
+      }
+      return d;
+    }
+    function build() {
+      if (svg) svg.remove();
+      knots = []; ys = []; lens = [];
+      var W = parseFloat(getComputedStyle(log).paddingLeft) || 56, H = log.scrollHeight;
+      var L = W * 0.14, R = W * 0.86, nodes = [];
+      rows.forEach(function (r, i) { var y = r.offsetTop + 34; ys.push(y); nodes.push([i % 2 ? R : L, y]); });
+      svg = el('svg'); svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('aria-hidden', 'true');
+      var d = route(nodes, 7, W * 0.85), d2 = route(nodes, 19, W * 0.95);
+      pencil = el('path', 'pencil'); pencil.setAttribute('d', d2); pencil.setAttribute('transform', 'translate(2.5,1)');
+      trace = el('path', 'trace'); trace.setAttribute('d', d);
+      svg.appendChild(pencil); svg.appendChild(trace);
+      var probe = el('path'); svg.appendChild(probe);
+      nodes.forEach(function (n, i) {
+        probe.setAttribute('d', route(nodes.slice(0, i + 1), 7, W * 0.5)); lens.push(probe.getTotalLength());
+        var k = el('path', 'knot' + (i === 0 ? ' first' : '')); k.setAttribute('d', blob(n[0], n[1], i === 0 ? 7 : 6.5, prng(31 + i))); svg.appendChild(k); knots.push(k);
+      });
+      svg.removeChild(probe);
+      total = trace.getTotalLength();
+      trace.style.strokeDasharray = total; pencil.style.strokeDasharray = pencil.getTotalLength();
+      ring = el('circle', 'you-ring'); ring.setAttribute('r', 11); you = el('circle', 'you'); you.setAttribute('r', 4.5);
+      svg.appendChild(ring); svg.appendChild(you);
+      log.insertBefore(svg, log.firstChild);
+      update();
+    }
+    function lenAtY(y) {
+      if (y <= 0) return 0;
+      for (var i = 0; i < ys.length; i++) {
+        if (y <= ys[i]) { var y0 = i ? ys[i - 1] : 0, l0 = i ? lens[i - 1] : 0; return l0 + (lens[i] - l0) * ((y - y0) / (ys[i] - y0)); }
+      }
+      return total;
+    }
+    function update() {
+      raf = 0; if (!svg) return;
+      var drawn = still ? total : lenAtY(window.innerHeight * 0.78 - log.getBoundingClientRect().top);
+      drawn = Math.max(0, Math.min(total, drawn));
+      trace.style.strokeDashoffset = total - drawn;
+      var pl = pencil.getTotalLength(); pencil.style.strokeDashoffset = pl - pl * (drawn / total);
+      var pt = trace.getPointAtLength(Math.max(drawn, 0.01)); you.setAttribute('cx', pt.x); you.setAttribute('cy', pt.y); ring.setAttribute('cx', pt.x); ring.setAttribute('cy', pt.y);
+      rows.forEach(function (r, i) { if (still || drawn >= lens[i] - 2) { r.classList.add('seen'); knots[i].classList.add('seen'); } });
+    }
+    function tick() { if (!raf) raf = requestAnimationFrame(update); }
+    build();
+    window.addEventListener('scroll', tick, { passive: true });
+    window.addEventListener('resize', build);
+    window.addEventListener('load', build);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+    if (window.ResizeObserver) { var last = log.scrollHeight; new ResizeObserver(function () { if (log.scrollHeight !== last) { last = log.scrollHeight; build(); } }).observe(log); }
+  })();
+
+  /* Cursor trail: a thin route that follows the pointer and fades out. Mouse only, off for reduced motion. */
+  var cv = document.getElementById('trail');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  if (cv && cv.getContext && fine.matches && !reduce.matches) {
+    var cx = cv.getContext('2d'), pts = [], raf = 0, W = 0, H = 0, dpr = 1, LIFE = 1100, last = null;
+    function size() { dpr = Math.min(window.devicePixelRatio || 1, 2); W = window.innerWidth; H = window.innerHeight; cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    size(); window.addEventListener('resize', size);
+    function col() { return getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#2A45D6'; }
+    window.addEventListener('pointermove', function (e) {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      var t = performance.now();
+      if (!last || Math.hypot(e.clientX - last.x, e.clientY - last.y) > 14) { pts.push({ x: e.clientX, y: e.clientY, t: t, stop: false }); last = { x: e.clientX, y: e.clientY }; }
+      if (!raf) raf = requestAnimationFrame(draw);
+    }, { passive: true });
+    function draw() {
+      var now = performance.now(), c = col(); cx.clearRect(0, 0, W, H);
+      pts = pts.filter(function (p) { return now - p.t < LIFE; });
+      cx.lineWidth = 1.5; cx.lineJoin = 'round'; cx.strokeStyle = c; cx.fillStyle = c;
+      for (var i = 1; i < pts.length; i++) {
+        var a = pts[i - 1], b = pts[i], k = 1 - (now - b.t) / LIFE;
+        cx.globalAlpha = Math.max(0, k) * 0.7; cx.beginPath(); cx.moveTo(a.x, a.y); cx.lineTo(b.x, b.y); cx.stroke();
+      }
+      for (var j = 0; j < pts.length; j++) {
+        var q = pts[j], kk = Math.max(0, 1 - (now - q.t) / LIFE);
+        cx.globalAlpha = kk * 0.9; cx.beginPath(); cx.arc(q.x, q.y, 2 + 2 * kk, 0, 6.2832); cx.fill();
+      }
+      cx.globalAlpha = 1;
+      if (pts.length) { raf = requestAnimationFrame(draw); } else { raf = 0; cx.clearRect(0, 0, W, H); }
+    }
+  }
+})();
+(function () {
+  var btn = document.getElementById('copy');
+  var out = document.getElementById('status');
+  btn.addEventListener('click', function () {
+    var addr = document.getElementById('mail').textContent;
+    try {
+      navigator.clipboard.writeText(addr).then(
+        function () { out.textContent = 'Copied ' + addr; },
+        function () { out.textContent = 'Could not copy. Select the address above instead.'; }
+      );
+    } catch (e) {
+      out.textContent = 'Could not copy. Select the address above instead.';
+    }
+  });
+})();
+</script>
+</body>
+</html>

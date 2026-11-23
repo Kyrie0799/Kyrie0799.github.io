@@ -1,0 +1,18 @@
+# Partha Deshpande
+
+> Senior Data Analyst at Bolt (Tallinn, since Sep 2026) and founder of Advisoira, a SEBI-registered fee-only investment advisory practice in India. Nine years in analytics across five cities and five companies.
+
+## Work
+- Bolt, Senior Data Analyst (Sep 2026 to now): incentive experiments, quarterly budget, Delivery-as-a-Service analytics.
+- FedEx, Senior Data Analyst 2 (Mar 2025 to Aug 2026): four audit pipelines, run time cut from two hours to 15 minutes, pricing monitor.
+- Zepto, Senior Analytics Manager (Aug 2024 to Mar 2025): churn cohort analysis; against a control group retention rose 300 bps and reactivation rose 10 percent.
+- Swiggy Instamart, Senior Business Associate (Jun 2023 to Aug 2024): defined Orders per Day and GMV, A/B tests and root-cause analyses.
+- ZS, Decision Analytics Associate (May 2021 to Jun 2023): dashboards for 2,000+ sales reps, Oracle SQL to Alteryx saving 6 days a month.
+
+## Skills
+SQL (Snowflake, Databricks, PostgreSQL, Oracle), dbt, Git, Python, Power BI, Looker, Superset, Alteryx.
+
+## Links
+- Site: https://kyrie0799.github.io/
+- LinkedIn: https://www.linkedin.com/in/parthadeshpande
+- Advisoira: https://advisoira.com (separate from his employer; not investment advice)
